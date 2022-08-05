@@ -1,0 +1,31 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div class="home"></div>
+
+<style>
+    #box {
+        height: 400px;
+        width: 400px;
+        text-align: center;
+        display: inline-block;
+        border: 10px solid green;
+        line-height: 400px;
+
+
+    }
+</style>
+
+<script type="text/babel">
+    function Name(x) {
+        return <div id="box">{x.no}</div>
+    }
+    function App() {
+        return <div><div><Name no="1" /><Name no="2" /><Name no="3" /><Name no="4" /></div>
+            <div><Name no="5" /><Name no="6" /><Name no="7" /><Name no="8" /></div>
+        </div>
+    }
+    var root = ReactDOM.createRoot(document.querySelector(".home"))
+    root.render(<App />)
+</script>

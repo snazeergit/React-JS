@@ -1,0 +1,24 @@
+<!-- To recognise React Components-->
+<script src="react.development.js"></script>
+<!-- To render the coponent content in to container-->
+<script src="react-dom.development.js"></script>
+<!-- To compile the component content-->
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function Name(){
+    return <h1>Nazeer</h1>
+}
+
+function App(){
+    return <div><Name/><Name/><Name/><Name/><Name/></div>
+}
+
+var root=ReactDOM.createRoot(document.getElementById('root'))
+
+root.render(<App/>)
+
+</script>
