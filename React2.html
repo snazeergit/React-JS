@@ -1,0 +1,20 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="menu"></div>
+
+<script type="text/babel">
+
+    function PrintMyName(){
+        name=" ";
+        for( var i=0; i<3;i++){
+            name=name+" Nazeer_Syed";
+        }
+        return name;
+    }
+
+    var element=ReactDOM.createRoot(document.getElementById('menu'));
+    element.render(<PrintMyName />)
+
+</script>

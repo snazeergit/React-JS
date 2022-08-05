@@ -1,0 +1,29 @@
+<!-- It selects all the elements with matching attribute. 
+it selects all the elements with attribute name=n1 -->
+
+<html>
+
+<head>
+    <style>
+        [name=n1] {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span name="n1">Sachin</span>
+        <h1 name="n1">Dhoni</h1>
+        <p name="n1">Ganguly</p>
+        <b>
+            <p name="n1">Kiran Rao</p>
+        </b>
+        <p>Laxman</p>
+        <h1>Dravid</h1>
+        <span>Rayudu</span>
+    </div>
+</body>
+
+</html>
+<!-- Result: Sachin, Dhoni, Ganguly, Kiran Rao text elements into red color. -->

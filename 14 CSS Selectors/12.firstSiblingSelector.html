@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <!-- It selects the first sibling of element. here red color will be
+    applied to p tag which sibling to h1 i.e the order will be 
+    top to bottom h1 tag then p tag has to come -->
+    <style>
+        h1+p {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>Sachin</span>
+        <h1>Dhoni</h1>
+        <p>Ganguly</p>
+        <p>Laxman</p>
+        <h1>Dravid</h1>
+        <span>Rayudu</span>
+    </div>
+</body>
+
+</html>
+
+<!-- Result: Ganguly p element into red color. -->

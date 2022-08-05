@@ -1,0 +1,28 @@
+
+    //To recognise the react components.
+    <script src="react.development.js"></script>
+    
+    //Render the content inside the container browser can not do that.
+    <script src="react-dom.development.js"></script>
+    
+    //The JSX code inside the component will be compiled using the below line.
+    <script src="babel.min.js"></script>
+
+    <div id="root"></div>
+    //To compile the JSX code in React components using babel
+    <script type="text/babel">
+        //Prepare content using component
+        function Hello() {
+
+            //JSX code(JSX=HTML+JS+XML) it needs compilation so we use babel
+            return <h1>Hello World</h1>;
+        }
+
+        //get the reference of the element nothing but container ref
+        //using createRoot() we can get the container ref or root element or starting element
+        //var root=ReactDOM.createRoot(document.querySelector('#root'));
+        var root=ReactDOM.createRoot(document.getElementById('root'));
+        
+        //render the content inside the container
+        root.render(<Hello />)
+    </script>

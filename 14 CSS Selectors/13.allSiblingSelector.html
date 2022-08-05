@@ -1,0 +1,27 @@
+<!-- It selects all siblings of element. 
+all the <p> tags that are after <h1> (top to bottom) will be in red-->
+
+<html>
+<head>
+    <style>
+        h1 ~ p{
+          color:red 
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Dilshad</p>
+        <span>Sachin</span>
+        <p>sardar</p>
+        <h1>Dhoni</h1>
+        <p>Ganguly</p>
+        <p>Laxman</p>
+        <h1>Dravid</h1>
+        <p>Nazeer</p>
+        <span>Rayudu</span>
+        <p>Kavita</p>
+    </div>
+</body>
+</html>
+<!-- Result: Ganguly, Laxman, Nazeer, Kavita p elements into red color. -->

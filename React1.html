@@ -1,0 +1,16 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    function Hello() {
+        return <h1>Welcome to React JS</h1>;
+    }
+
+    var root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<Hello />)
+
+</script>

@@ -1,0 +1,44 @@
+body{
+    margin: 0px;
+}
+div:first-child{
+    text-align: center;
+    font-size: 55px;
+    background: yellow;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+.menu{
+    list-style-type: none;
+    text-align: right;
+    background: #b8e5e5;
+    line-height: 40px;
+    margin: 0px;
+    position: sticky;
+    top: 63px;
+
+}
+.menu>li{
+    display: inline;
+    font-weight: bold;
+    font-size: 30px;
+    margin-right: 20px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    
+}
+.menu+div{
+    text-align: center;
+    font-size: 50px;
+    height: 1000px;
+}
+div:last-of-type{
+    background: yellow;
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+    position: sticky;
+    bottom: 0;
+}
+
