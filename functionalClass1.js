@@ -18,5 +18,25 @@ function Car(){
 
 //Execute after running the functional class
 var carObj=new Car()
+carObj.brand
+//or
+carObj['brand']
+
+carObj.model
+//or
+carObj["model"]
+
+carObj.price
+//or
+carObj['price']
+
+carObj.insurance
+//or
+carObj['insurance']
+
+carObj.roadTax
+//or
+carObj['roadTax']
+
 carObj.getOnRoadPrice()
 carObj.getCarDetails()
