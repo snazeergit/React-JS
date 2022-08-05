@@ -9,7 +9,7 @@ function Addition(){
 var obj=new Addition()
 obj.add()
 NaN
-//Adding a value to the variable
+//Adding a variable value to Object
 obj.b=20
 20
 obj.add()
