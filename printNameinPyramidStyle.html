@@ -1,0 +1,45 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+
+<div id="root"></div>
+
+<style>
+
+h1{
+    display: inline;
+    color: red;
+}
+div{
+    text-align: center;
+}
+
+</style>
+
+<script type="text/babel">
+
+    function Name() {
+        return <h1>Ar</h1>
+    }
+
+    function App() {
+        return <div>
+            <div><Name /></div>
+            <div><Name /><Name /></div>
+            <div><Name /><Name /><Name /></div>
+            <div><Name /><Name /><Name /><Name /></div>
+            <div><Name /><Name /><Name /><Name /><Name /></div>
+            <div><Name /><Name /><Name /><Name /><Name /><Name /></div>
+            <div><Name /><Name /><Name /><Name /><Name /><Name /><Name /></div>
+            <div><Name /><Name /><Name /><Name /><Name /><Name /><Name /><Name /></div>
+            <div><Name /><Name /><Name /><Name /><Name /><Name /><Name /><Name /><Name /></div>
+            <div><Name /><Name /><Name /><Name /><Name /><Name /><Name /><Name /><Name /><Name /></div>
+        </div>
+
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+
+    obj.render(<App />)
+
+</script>

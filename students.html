@@ -1,0 +1,22 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    function Student(data) {
+        return <h1>I'm {data.name} from {data.org} having {data.exp} years of experience in {data.tech}</h1>
+    }
+    function App() {
+        return <div>
+            <div><Student name="Nazeer" org="VMware" exp="8" tech="Java" /></div>
+            <div><Student name="Dilshad" org="Wipro" exp="4" tech=".Net" /></div>
+            <div><Student name="Vikram" org="HCL" exp="6" tech="Java" /></div>
+            <div><Student name="Gowthami" org="L&T" exp="6" tech="Azure" /></div>
+        </div>
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>
