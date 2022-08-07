@@ -1,0 +1,25 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    function Player(details) {
+        return <h1>Hi, this is {details.name} from {details['location']} and my runs are {details.children}</h1>
+    }
+
+
+    function App() {
+        return <div>
+            <div><Player name="Sachin" location="Mumbai" >20000</Player></div>
+            <div><Player name="Dhoni" location="Ranchi" >10000</Player></div>
+            <div><Player name="Kohli" location="Delhi" >15000</Player></div>
+        </div>
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById("root"))
+    obj.render(<App />)
+
+</script>
