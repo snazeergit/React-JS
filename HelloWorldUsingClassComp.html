@@ -1,0 +1,18 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div class="root"></div>
+
+<script type="text/babel">
+
+    class App extends React.Component {
+        render() {
+            return <h1>Nazeer Syed</h1>
+        }
+    }
+
+    var obj = ReactDOM.createRoot(document.querySelector(".root"))
+    obj.render(<App />)
+
+</script>

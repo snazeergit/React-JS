@@ -1,0 +1,25 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+class Name extends React.Component {
+        render() {
+            return <h1>NazeerRS</h1>
+        }
+    }
+
+    class App extends React.Component {
+
+        render() {
+            return <div><div><Name /></div><div><Name /></div><div><Name /></div><div><Name /></div><div><Name /></div></div>
+        }
+
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'));
+    obj.render(<App />)
+
+</script>

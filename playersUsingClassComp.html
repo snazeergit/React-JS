@@ -1,0 +1,30 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+class Player extends React.Component{
+    render(){
+        return <h1>My name is {this.props.name} from {this.props.children}, I've scored {this.props.runs} runs in international cricket</h1>
+    }
+}
+
+    class App extends React.Component {
+
+        render() {
+            return <div>
+                <div><Player name="Sachin" runs="20000">Mumbai</Player></div>
+                <div><Player name="Dhoni" runs="10000">Ranchi</Player></div>
+                <div><Player name="Kohli" runs="15000">Delhi</Player></div>
+            </div>
+        }
+
+    }
+
+    var obj=ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>
