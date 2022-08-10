@@ -1,0 +1,46 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+    class App extends React.Component {
+        cal() {
+            var no1 = Number(document.querySelector('p:first-of-type>input').value)
+            var res
+            const storePrimeNumbers = []
+            for (var num = 2; num <= no1; num++) {
+
+                var Prime = true;
+                for (var i = 2; i <= num; i++) {
+                    if (num % i === 0 && i !== num) {
+                        Prime = false;
+                        if (num == no1) {
+                            res = 'not a Prime number'
+                        }
+                    }
+                }
+                if (Prime === true) {
+                    if (num == no1) {
+                        res = 'a Prime number'
+                    }
+                    storePrimeNumbers.push(num)
+                }
+            }
+            document.querySelector('span').innerText = res
+            document.querySelector('h3:last-of-type>span').innerText = storePrimeNumbers
+        }
+        render() {
+            return <div>
+                <p>Enter a number :<input type="text" /></p>
+                <p><button onClick={this.cal}>findPrimeNumber</button></p>
+                <h3>Given Number is : <span></span></h3>
+                <h3>List : <span></span></h3>
+            </div>
+        }
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

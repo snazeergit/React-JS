@@ -1,0 +1,25 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+    function Cal() {
+        var no1 = Number(document.querySelector('p:first-of-type>input').value)
+        var res = 'Odd'
+        if (no1 % 2 == 0) {
+            res = 'Even'
+        }
+        document.querySelector('span').innerText = res
+    }
+    function App() {
+        return <div>
+            <p>No1:<input type="text" /></p>
+            <p><button onClick={Cal}>findPrimeNumber</button></p>
+            <h3>Given Number is : <span></span></h3>
+        </div>
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

@@ -1,0 +1,23 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    function Name(){
+        var name=document.querySelector('p:first-of-type>input').value
+        var res=name.split("").reverse().join("")
+        console.log(res)
+        document.querySelector("span").innerText=res
+    }
+    function App() {
+        return <div>
+            <p>Enter a name : <input type="text" /></p>
+            <p><button onClick={Name}>Reverse</button></p>
+            <h3>Reverse is : <span></span></h3>
+        </div>
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>

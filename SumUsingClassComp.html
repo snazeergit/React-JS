@@ -1,0 +1,28 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    class App extends React.Component {
+        sum() {
+            var no1=document.querySelector('p:first-of-type>input').value
+            var no2=document.querySelector('p:nth-child(2)>input').value
+            var sum=Number(no1)+parseInt(no2);
+            document.querySelector('span').innerText=sum
+        }
+        render() {
+            return <div>
+                <p>No 1:<input type="text" /></p>
+                <p>No 2:<input type="text" /></p>
+                <p><button onClick={this.sum}>Add</button></p>
+                <h3>Sum :<span  ></span></h3>
+            </div>
+        }
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

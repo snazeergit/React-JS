@@ -1,0 +1,26 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    class App extends React.Component {
+        name() {
+            var str= document.querySelector("p:first-of-type >input").value
+            console.log(str)
+            var res = str.split("").reverse().join("")
+            document.querySelector('span').innerText = res
+        }
+        render() {
+            return <div>
+                <p>Enter a name: <input type="text" /> </p>
+                <p><button onClick={this.name}>Reverse It</button></p>
+                <h3>Reverse is : <span></span></h3>
+            </div>
+        }
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>

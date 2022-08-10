@@ -1,0 +1,32 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+    function Cal() {
+
+        /*
+        var no1 = document.querySelector('p:first-of-type>input').value
+        var no2 = document.querySelector('p:nth-child(2)>input').value
+        var sum = Number(no1) + parseInt(no2)
+        */
+
+        var no1 = Number(document.querySelector('p:first-of-type>input').value)
+        var no2 = parseInt(document.querySelector('p:nth-child(2)>input').value)
+        var sum = no1 + no2
+
+        document.querySelector('span').innerText=sum
+    }
+    function App() {
+        return <div>
+            <p>No1:<input type="text" /></p>
+            <p>No2:<input type="text" /></p>
+            <p><button onClick={Cal}>Addition</button></p>
+            <h3>Sum : <span></span></h3>
+        </div>
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>
