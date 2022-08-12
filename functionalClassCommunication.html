@@ -1,0 +1,29 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+    function TakeCar() {
+        console.log('Takecar called')
+        return <GoToBar num='90' />
+    }
+    function GoToBar(data) {
+        console.log('GoToBar called')
+        var num = data.num
+        for (var i = 0; i < num; i++) {
+            DrinkBear()
+        }
+        return <div>Car Price:{data.num}</div>
+    }
+    function DrinkBear() {
+        console.log('DrinkBear called')
+    }
+
+    function App() {
+        console.log('App called')
+        return <div><TakeCar /></div>
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>

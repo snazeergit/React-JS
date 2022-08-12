@@ -1,0 +1,59 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    class App extends React.Component {
+
+        fnClick() {
+            var num = Number(document.querySelector('h3:first-of-type>input').value)
+            var flag = 'not a prime'
+            var primes = []
+            if (this.fnPrimeCheck(num)) {
+                flag = 'is a prime'
+            }
+            var count=0
+            for (var i = 2; i <= num; i++) {
+                if (this.fnPrimeCheck(i)) {
+                    count++
+                    primes.push(i)
+                }
+            }
+            document.querySelector('h4:nth-child(3)>span').innerText=flag
+            document.querySelector('h4:last-of-type>span').innerText=primes
+            document.querySelector('h4:nth-child(4)>span').innerText=count
+        }
+        fnPrimeCheck(num) {
+            var counter=0
+            this.fnNaz()
+            for(var i=0;i<=num;i++){
+                if(num%i==0){
+                    counter++
+                }
+            }
+            if(counter==2){
+                return true
+            }else{
+                return false
+            }
+
+        }
+        fnNaz() {
+            console.log('fnNaz called')
+        }
+
+        render() {
+            return <div>
+                <h3>Enter a number: <input type="text" /></h3>
+                <p><button onClick={this.fnClick.bind(this)}><b>checkPrime</b></button></p>
+                <h4>Given number is: <span></span></h4>
+                <h4>No. of Prime Number in range: <span></span></h4>
+                <h4>List of Prime numbers in range: <span></span></h4>
+            </div>
+        }
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>

@@ -1,0 +1,30 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    class App extends React.Component {
+        TakeCar() {
+            console.log('Takecar called')
+            this.GoToBar(10)
+        }
+        GoToBar(data) {
+            console.log('GoToBar called')
+            var num = data.num
+            this.DrinkBear()
+        }
+        DrinkBear() {
+            console.log('DrinkBear called')
+        }
+
+        render() {
+            console.log('App called')
+            return <button onClick={this.TakeCar.bind(this)}>TakeCar</button>
+        }
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>
