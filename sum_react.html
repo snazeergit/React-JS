@@ -1,0 +1,31 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    const App = () => {
+        let ref1 = React.useRef()
+        let ref2 = React.useRef()
+        let ref3 = React.useRef()
+
+        const fnSum = () => {
+            var no1 = ref1.current.value
+            var no2 = ref2.current.value
+            var sum = Number(no1) + parseInt(no2)
+            ref3.current.innerText = sum
+        }
+
+        return <div>
+            <p>No1 : <input ref={ref1} /></p>
+            <p>No2 : <input ref={ref2} /></p>
+            <p><button onClick={fnSum}>Add</button> </p>
+            <h3>Sum : <span ref={ref3}></span></h3>
+        </div>
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

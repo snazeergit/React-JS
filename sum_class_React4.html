@@ -1,0 +1,47 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    class App extends React.Component {
+
+        /*
+        // we can define the state property to let us know what kind data sum holds,
+        //Its optional but Recommended
+        //We can define it as class member or define in a constructor
+        state = {
+            sum: '0'
+        }
+        */
+   
+        constructor() {
+            super()
+            this.state = {
+                sum: '0'
+            }
+
+        }
+        fnInput = (eve) => {
+            this[eve.target.id] = eve.target.value
+        }
+
+        fnSum = () => {
+            let result = Number(this.n1) + parseInt(this.n2)
+            this.setState({ sum: result })
+        }
+
+        render() {
+            return <div>
+                <p>No 1: <input id='n1' onChange={this.fnInput} /></p>
+                <p>No 2: <input id='n2' onChange={this.fnInput} /></p>
+                <p><button onClick={this.fnSum}>Sum</button></p>
+                <h3>Sum : {this.state.sum} </h3>
+            </div>
+        }
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>

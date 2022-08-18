@@ -1,0 +1,37 @@
+<!-- Using bind method to make the current class object available to all functions in the current class-->
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    class App extends React.Component {
+        
+        ref1 = React.createRef()
+        ref2 = React.createRef()
+        ref3 = React.createRef()
+
+        fnSum() {
+            let no1 = this.ref1.current.value
+            let no2 = this.ref2.current.value
+            let sum = Number(no1) + parseInt(no2)
+            this.ref3.current.innerText = sum
+        }
+
+        render() {
+            return <div>
+                <p>No1 : <input ref={this.ref1} /> </p>
+                <p>No2 : <input ref={this.ref2} /> </p>
+                <p><button onClick={this.fnSum.bind(this)}>Sum</button> </p>
+                <h3>Addition : <span ref={this.ref3}></span></h3>
+            </div>
+        }
+
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>
