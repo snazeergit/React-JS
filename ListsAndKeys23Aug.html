@@ -1,0 +1,125 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    const App = () => {
+
+        const players = ['Sachin', 'Dhoni', 'Dravid', 'Kohli', 'Rahul']
+        const students = [
+            {
+                name: "Nazeer",
+                marks: 99,
+                location: "Nellore"
+            },
+            {
+                name: "Dilshad",
+                marks: 101,
+                location: "Nellore"
+            },
+            {
+                name: "Sardar",
+                marks: 89,
+                location: "Nellore"
+            }
+        ]
+        //why without const the fnDisplay is undefined?
+        //if I use fnDisplay as normal function it works with out const, why?
+        //we can wreite all above players and Student array and fnDisplay function outside App componenet, Which is recommended?
+        const fnDisplay = (obj) => {
+            console.log(obj)
+        }
+
+        return <div>
+
+            <h3>Players :DDL</h3>
+            <select>
+                {
+                    players.map((value, index) => {
+                        return <option key={index}>{value}</option>
+                    })
+                }
+            </select>
+
+            <h3>Palyers :OL</h3>
+            <ol>{
+                players.map((value, index) => {
+                    return <li key={index}>{value}</li>
+                })
+            }
+            </ol>
+
+            <h3>Players :UOL</h3>
+            <ul>
+                {
+                    players.map((value, index) => {
+                        return <li key={index}>{value}</li>
+                    })
+                }
+            </ul>
+            <h3>Players : Bold Line by Line</h3>
+
+            {
+                players.map((value, index) => {
+                    return <h4 key={index}>{value}</h4>
+                })
+            }
+
+            <h3>Players :Table</h3>
+            <table border='1px'>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Player Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {
+                        players.map((value, index) => {
+                            return <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{value}</td>
+                            </tr>
+                        })
+                    }
+
+
+                </tbody>
+            </table>
+
+            <h3>Student : Table</h3>
+            <table border='1px'>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Marks</th>
+                        <th>Location</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        students.map((obj, index) => {
+                            const { name, marks, location } = obj
+                            return <tr key={index}>
+                                <td>{name}</td>
+                                <td>{marks}</td>
+                                <td>{location}</td>
+                                <td><button onClick={() => { fnDisplay(obj) }}>E</button></td>
+                                <td><button onClick={() => { fnDisplay(obj) }}>D</button></td>
+                            </tr>
+                        })
+                    }
+                </tbody>
+            </table>
+        </div >
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>
