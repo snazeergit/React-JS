@@ -6,11 +6,11 @@
 
 <script type="text/babel">
 
-class Player extends React.Component{
-    render(){
-        return <h1>My name is {this.props.name} from {this.props.children}, I've scored {this.props.runs} runs in international cricket</h1>
+    class Player extends React.Component {
+        render() {
+            return <h1>My name is {this.props.name} from {this.props.children}, I've scored {this.props.runs} runs in international cricket</h1>
+        }
     }
-}
 
     class App extends React.Component {
 
@@ -24,7 +24,7 @@ class Player extends React.Component{
 
     }
 
-    var obj=ReactDOM.createRoot(document.getElementById('root'))
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
     obj.render(<App />)
 
 </script>
