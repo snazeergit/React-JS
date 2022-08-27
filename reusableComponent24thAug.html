@@ -1,0 +1,42 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    const List = (props) => {
+        const {data}=props
+        return <select>
+                {
+                    data.map((value, index) => {
+                        return <option key={index}>{value}</option>
+                    })
+                }
+            </select>
+    }
+
+    const App = () => {
+        const players = [
+            'sachin',
+            'dravid',
+            'kohli'
+        ]
+        const students = [
+            'nazeer',
+            'sardar',
+            'dilshad'
+        ]
+        return <div>
+            <h3>Players: DDL</h3>
+            <List data={players}/>
+            <h3>Students: DDL</h3>
+            <List data={students}/>
+
+        </div>
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(< App />)
+</script>

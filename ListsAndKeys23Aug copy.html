@@ -1,0 +1,95 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    const App = () => {
+
+        const players = ['sachin', 'dravid', 'kohli']
+        const students = [
+            {
+                n: 'nazeer',
+                m: 99
+            },
+            {
+                n: 'sardar',
+                m: 89
+            },
+            {
+                n: 'dilshad',
+                m: 109
+            },
+
+        ]
+
+        const fnPrintRow=(evt)=>{
+            console.log(evt)
+        }
+
+        return <div>
+
+            <h3>Players :DDL</h3>
+            <select>
+                {
+                    players.map((value, index) => {
+                        return <option key={index}>{value}</option>
+                    })
+                }
+            </select>
+            
+            <h3>Players :Table</h3>
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>S.No.
+                        </th>
+                        <th>Name of the Player
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        players.map((value, index) => {
+                            return <tr key={index}>
+                                <th>{index + 1}
+                                </th>
+                                <th>{value}
+                                </th>
+                            </tr>
+                        })
+                    }
+                </tbody>
+            </table>
+
+            <h3>Student: Table</h3>
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Student Marks</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        students.map((obj, index) => {
+                            const {n,m}=obj
+                            return <tr key={index}>
+                                <td>{n}</td>
+                                <td>{m}</td>
+                                <td><button onClick={()=>{fnPrintRow(obj)}}>Print</button></td>
+                            </tr>
+                        })
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

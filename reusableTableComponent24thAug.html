@@ -1,0 +1,92 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    const Table = (props) => {
+        const { data, headers, columns } = props
+        return <table border="1px">
+            <thead>
+                <tr>
+                    {
+                        headers.map((value, index) => {
+                            return <th key={index}>{value}</th>
+                        })
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    data.map((obj, index) => {
+                        const{n,m,l} =obj
+                        return <tr key={index}>
+                            {
+                                columns.map((value, index) => {
+                                    //here vlaue contains the Keys 
+                                    return <td key={index}>{obj[value]}</td>
+                                })
+                            }
+                        </tr>
+                    })
+                }
+            </tbody>
+        </table>
+    }
+    const App = () => {
+
+        const players = [
+            {
+                n: 'Sachin',
+                r: 99,
+                l: 'Mumbai'
+            },
+            {
+                n: 'Sehwag',
+                r: 89,
+                l: 'New Delhi'
+            },
+            {
+                n: 'Ganguly',
+                r: 109,
+                l: 'Kolcutta'
+            },
+
+        ]
+        const students = [
+            {
+                n: 'nazeer',
+                m: 99
+            },
+            {
+                n: 'sardar',
+                m: 89
+            },
+            {
+                n: 'dilshad',
+                m: 109
+            },
+            {
+                n: 'arman',
+                m: 99
+            }
+        ]
+        const playerHeaders = ['Name', 'Runs', "Location"]
+        const studentHeaders = ['Name', 'Marks']
+        const playerColumns = ['n', 'r', "l"]
+        const studentColumns = ['n', 'm']
+
+        return <div>
+            <h3>Players: Table</h3>
+            <Table data={players} headers={playerHeaders} columns={playerColumns} />
+
+            <h3>Students: Table</h3>
+            <Table data={students} headers={studentHeaders} columns={studentColumns} />
+        </div>
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(< App />)
+</script>
