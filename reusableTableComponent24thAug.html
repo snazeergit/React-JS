@@ -53,7 +53,6 @@
                 r: 109,
                 l: 'Kolcutta'
             },
-
         ]
         const students = [
             {
@@ -75,8 +74,14 @@
         ]
         const playerHeaders = ['Name', 'Runs', "Location"]
         const studentHeaders = ['Name', 'Marks']
-        const playerColumns = ['n', 'r', "l"]
-        const studentColumns = ['n', 'm']
+        
+        //fetching keys in players array obj
+        //const playerColumns = ['n', 'r', "l"]
+        const playerColumns =Object.keys(players.at(0))
+        
+        //fetching keys in students array obj
+        //const studentColumns = ['n', 'm']
+        const studentColumns =Object.keys(students.at(0))
 
         return <div>
             <h3>Players: Table</h3>
