@@ -1,0 +1,47 @@
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.18.10/babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    class B extends React.Component {
+
+        render() {
+            return <div>
+                <h3>B :{this.props.name}</h3>
+            </div>
+        }
+    }
+
+
+    class A extends React.Component {
+        name = 'Sachin'
+        render() {
+            return <div>
+                <h3>A </h3>
+                {this.props.data(this.name)}
+            </div>
+        }
+    }
+
+    class App extends React.Component {
+        state = {
+            name: '....'
+        }
+        fn = (name) => {
+            this.setState({ name })
+        }
+
+        render() {
+            return <div>
+                <h3> App </h3>
+                <A data={this.fn} />
+                <B name={this.state.name} />
+            </div>
+        }
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>

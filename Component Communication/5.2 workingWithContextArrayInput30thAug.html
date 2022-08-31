@@ -9,21 +9,26 @@
     const E = () => {
         const ctxData = React.useContext(ctx)
         return <div>
-            <h3>E : {ctxData}</h3>
+            <h3>E : {ctxData[0]}</h3>
         </div>
     }
 
     const D = () => {
-
+        const ctxData = React.useContext(ctx)
         return <div>
-            <h3>D</h3>
+            <h3>D : {ctxData[1]}</h3>
         </div>
     }
 
     const C = () => {
-
+        const ctxData = React.useContext(ctx)
         return <div>
             <h3>C</h3>
+            {
+                ctxData.map((v, i) => {
+                    return <h4 key={i}>{v}</h4>
+                })
+            }
             <E />
         </div>
     }
@@ -45,16 +50,10 @@
     }
 
     const App = () => {
-        const nameRef = React.useRef()
-        const[name,setName]=React.useState("...")
-        const fnClick = () => {
-            let name=nameRef.current.value
-            setName(name)
-        }
+        const [players] = React.useState(['Sachin', 'Dhoni', 'Kohli'])
         return <div>
-            <h3> App : <input ref={nameRef} /></h3>
-            <button onClick={fnClick}>send</button>
-            <ctx.Provider value={name}>
+            <h3> App </h3>
+            <ctx.Provider value={players}>
                 <A />
             </ctx.Provider>
 
