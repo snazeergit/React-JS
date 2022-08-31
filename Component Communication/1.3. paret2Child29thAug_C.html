@@ -1,0 +1,25 @@
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.18.10/babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    class A extends React.Component {
+        render() {
+            return <div><h2>A :{this.props.data}</h2>
+            </div>
+        }
+    }
+
+    class App extends React.Component {
+        name = 'Sachin'
+        render() {
+            return <div> <h1>App</h1>
+                <A data={this.name} />
+            </div>
+        }
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>
