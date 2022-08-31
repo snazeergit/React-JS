@@ -1,0 +1,41 @@
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.18.10/babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    const B = (props) => {
+        return <div>
+            <h3>B :{props.name}</h3>
+        </div>
+    }
+
+    const A = (props) => {
+        const nameRef = React.useRef()
+        const fnClick = () => {
+            let name = nameRef.current.value
+            props.data(name)
+        }
+        return <div>
+            <h3>A : <input ref={nameRef} /></h3>
+            <button onClick={fnClick}>send</button>
+        </div>
+    }
+
+    const App = () => {
+        const [name, setName] = React.useState(' . . . !')
+        const fn = (name) => {
+            setName(name)
+        }
+
+        return <div>
+            <h3> App </h3>
+            <A data={fn} />
+            <B name={name} />
+        </div>
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>

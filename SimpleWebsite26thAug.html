@@ -48,6 +48,12 @@
         return <div className='footer'>&copy; 2022 KR Tiles, Inc. All rights reserved.</div>
     }
     const Menu = () => {
+        window.addEventListener('resize', () => {
+            fnResize()
+        })
+        const fnResize = () => {
+console.log(document.body.offsetWidth)
+        }
         return <div className='menu'>
             <a>Home</a>
             <a>Products</a>

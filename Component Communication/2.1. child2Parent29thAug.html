@@ -1,0 +1,28 @@
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.18.10/babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    const A = (props) => {
+        const name='Sachin'
+        props.data(name)
+        return <div>
+            <h2>A</h2>
+        </div>
+    }
+
+    const App = () => {
+        const[name, setName]=React.useState(' . . . ')
+        const fn = (_name) => {
+            setName(_name)
+        }
+        return <div> 
+            <h1>App:{name}</h1>
+            <A data={fn} />
+        </div>
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>
