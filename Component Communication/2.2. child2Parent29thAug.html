@@ -7,10 +7,11 @@
 <script type="text/babel">
     const A = (props) => {
         const nameRef = React.useRef()
-        
-        const fnClick=()=>{
-            let name=nameRef.current.value
-            props.data(name)
+
+        const fnClick = () => {
+            // let name=nameRef.current.value
+            // props.data(name)
+            props.data(nameRef.current.value)
         }
         return <div>
             <h2>A : <input ref={nameRef} /></h2>

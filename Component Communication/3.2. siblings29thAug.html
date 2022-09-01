@@ -14,8 +14,9 @@
     const A = (props) => {
         const nameRef = React.useRef()
         const fnClick = () => {
-            let name = nameRef.current.value
-            props.data(name)
+            // let name = nameRef.current.value
+            // props.data(name)
+            props.data(nameRef.current.value)
         }
         return <div>
             <h3>A : <input ref={nameRef} /></h3>
