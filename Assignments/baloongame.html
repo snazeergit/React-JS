@@ -1,0 +1,223 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+<div id="root"></div>
+<style>
+
+   .board{
+       height: 400px;
+       width: 500px;
+       border:2px solid red;
+       position: relative;
+   }
+   .arrow{
+    width: 100px;
+    display: inline-block;
+    border: 2px solid;
+    background: blue;
+    position: absolute;
+ 
+   }
+
+   .bal1{
+    height: 70px;
+    width: 70px;
+    border: 1px solid red;
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    left: 350;
+   }
+   .bal2{
+    height: 100px;
+    width: 100px;
+    border: 1px solid red;
+    border-radius: 50%;
+    position: absolute;
+    top: 150px;
+    left: 250;
+   }
+   .bal3{
+    height: 50;
+    width: 50;
+    border: 1px solid red;
+    border-radius: 50%;
+    position: absolute;
+    top: 300px;
+    left: 400;
+   }
+   .active-baloon{
+    background: yellow;
+   }
+</style>
+<script type="text/babel" >
+   class Arrow extends React.Component{
+       constructor(){
+           super();
+           this.fnKeyUp=this.fnKeyUp.bind(this);
+           window.addEventListener('keyup',this.fnKeyUp);
+           this.state={
+               at:0,
+               al:0
+           }
+       }
+       fnKeyUp(eve){
+                if(eve.keyCode == 13){//Enter
+
+                   let baloonInfo=this.props.baloon
+                    if(!baloonInfo){
+                        alert("Please select target Ballon");
+                        return;
+                    }
+                   let bt=baloonInfo.offsetTop; 
+                   let bh=baloonInfo.offsetHeight;
+                   let bl=baloonInfo.offsetLeft;
+
+                   if(this.state.at > bt && this.state.at < (bt+bh)){//success hit
+                        let moveLeft=bl-100;
+                        let interval=setInterval(() => {
+                            this.setState({
+                                al:this.state.al+1
+                            })
+                            if(this.state.al == moveLeft){
+                                clearInterval(interval);
+                                baloonInfo.style.display='none';
+                                this.setState({
+                                    at:0,
+                                    al:0
+                                })
+                                this.props.fnResetBaloon();
+                                this.props.fnSendResultToBoard('s');
+                            }
+
+                        }, 10);
+
+                   }else{//wrong hit
+
+                    let moveLeft=400;
+                    let interval=setInterval(() => {
+                        this.setState({
+                            al:this.state.al+1
+                        })
+                        if(this.state.al == moveLeft){
+                            clearInterval(interval)
+                            this.setState({
+                                al:0,
+                                at:0
+                            })
+                            this.props.fnSendResultToBoard('f')
+                        }
+                    }, 10);
+                   }
+                }
+
+                if(eve.keyCode == 38){//ArrowUp  
+                   if(this.state.at== 0)return;
+                    this.setState({
+                         at:this.state.at-5
+                     })
+                }
+
+                if(eve.keyCode == 40){//ArrowDown  
+                     if(this.state.at == 400)return;
+                     this.setState({
+                         at:this.state.at+5
+                     })
+                }
+       }
+       render(){
+           return <div className="arrow" style={{top:this.state.at,left:this.state.al}}></div>
+       }
+   }
+   class Baloon extends React.Component{
+       render(){
+           return <div id={this.props.cls} className={`${this.props.cls} ${this.props.isActive ? 'active-baloon' : ''} `}></div>
+       }
+   }
+   class Board extends React.Component{
+     constructor(){
+         super();
+         this.fnBalClick=this.fnBalClick.bind(this);
+         this.fnResetBalInfo=this.fnResetBalInfo.bind(this);
+         this.fnGetResultToBoard=this.fnGetResultToBoard.bind(this)
+         this.state={
+             balName:'',
+             baloonInfo:null
+         }
+     }
+
+     fnGetResultToBoard(data){
+         this.props.fnSendResultToApp(data);
+     }
+
+     fnResetBalInfo(){
+        this.setState({
+            baloonInfo:null
+        })
+     }
+    fnBalClick(eve){
+        eve.stopPropagation();
+        this.setState({
+            balName:eve.target.id,
+            baloonInfo:eve.target
+        })
+    }
+   
+       render(){
+           return <div className="board">
+                    <Arrow baloon={this.state.baloonInfo}  fnSendResultToBoard={this.fnGetResultToBoard} fnResetBaloon={this.fnResetBalInfo}  />
+                    <div onClick={this.fnBalClick}>
+                        <Baloon cls="bal1" isActive={this.state.balName == 'bal1' } />
+                        <Baloon cls="bal2" isActive={this.state.balName == 'bal2'}/>
+                        <Baloon cls="bal3" isActive={this.state.balName == 'bal3' } />
+                    </div>
+           </div>
+       }
+   }
+
+   function  Score(props) {
+        return <div>
+           <h1>Score : {props.score}</h1>
+           <h2>Chances Left:{props.cl} </h2>
+        </div>
+   }
+
+   class App extends React.Component{
+      constructor(){
+          super();
+          this.fnGetResultToApp=this.fnGetResultToApp.bind(this);
+          this.state={
+              score:0,
+              chancesLeft:1
+          }
+      }
+
+      fnGetResultToApp(data){
+         if(data == 's'){
+             this.setState({
+                 score:this.state.score+1
+             })
+         }else{
+            if(this.state.chancesLeft == 0){
+                window.location.reload();
+            }
+            this.setState({
+                chancesLeft:this.state.chancesLeft-1
+             })
+         }
+      }
+      render(){
+          return <div>
+             <Board  fnSendResultToApp={this.fnGetResultToApp} />
+             <Score score={this.state.score} cl={this.state.chancesLeft} />
+          </div>
+      }
+   }
+   //Before React 18 
+   //ReactDOM.render(<App />,document.getElementById('root'));
+
+   const root=ReactDOM.createRoot(document.getElementById('root'))
+   root.render(<App />)
+</script>

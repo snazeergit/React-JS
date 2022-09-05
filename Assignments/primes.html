@@ -1,0 +1,82 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+
+<script type="text/babel">
+   //prepare content
+   //props, refs, updater,  context, isReactComponent,setState,forceUpdate
+   class App extends React.Component{
+     
+        fnClick=()=>{
+            var no= document.querySelector('#no').value
+            var msg='Not Prime'
+            var primes=[]
+            if(this.fnCheckPrime(no)){
+                msg='Prime'
+            }
+            document.querySelector('h3>span').innerText=msg;
+            for(var i=1;i<=no;i++){
+                if(this.fnCheckPrime(i)){
+                    primes.push(i)
+                }
+            }
+            document.querySelector('h4>span').innerText=primes.join()
+        }
+
+        // fnClick(){
+        //     var no= document.querySelector('#no').value
+        //     var msg='Not Prime'
+        //     var primes=[]
+        //     if(this.fnCheckPrime(no)){
+        //         msg='Prime'
+        //     }
+        //     document.querySelector('h3>span').innerText=msg;
+        //     for(var i=1;i<=no;i++){
+        //         if(this.fnCheckPrime(i)){
+        //             primes.push(i)
+        //         }
+        //     }
+        //     document.querySelector('h4>span').innerText=primes.join()
+        // }
+
+        fnCheckPrime(no){
+            var factors=0
+            for(var i=1;i<=no;i++){
+                if(no%i==0){
+                    factors++
+                } 
+            }
+            if(factors==2){
+                return true
+            }
+            return false
+        }
+        render(){
+            return <div>
+                    <p>
+                        <b>No:</b><input id="no" />
+                    </p>
+                   
+                    <p>
+                        <button onClick={this.fnClick}>Submit</button>
+                    </p>
+                    <h3>Result:<span></span> </h3>
+                    <h4>Primes:<span></span> </h4>
+
+
+                </div>
+        }
+   }
+   
+   //container
+
+   var root=ReactDOM.createRoot(document.getElementById('root'))
+
+   //render content inside the container
+
+   root.render(<App />)
+
+</script>

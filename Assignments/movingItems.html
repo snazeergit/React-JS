@@ -1,0 +1,122 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<style>
+.active{
+    background-color: darkgray;
+    color: white;
+}
+.box{
+    width:200px;
+    height: 200px;
+    border: 1px solid red;
+    display: inline-block;
+}
+.move-btn{
+    position: relative;
+    top:-100px
+}
+.box >div{
+    padding: 10px 2px;
+    cursor: pointer;
+}
+
+</style>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+class Left extends React.Component{
+
+    constructor(){
+        super();
+        this.state={
+            selItem:''
+        }
+    }
+    fnItemClick(e){
+        e.stopPropagation();
+        let item=e.target.innerText;
+        this.setState({
+            selItem:item
+        })
+        this.props.fnGetSelItem(item);
+    }
+    render(){
+        return <div className='box' style={{float:'left'}}>
+                 {
+                      this.props.items.map((v,i)=>{
+                          return <div className={this.state.selItem == v && 'active'} onClick={this.fnItemClick.bind(this)} key={i}>{v}</div>
+                      })
+                  }
+            </div>
+    }
+}
+
+
+class Right extends React.Component{
+
+    constructor(){
+        super();
+    
+    }
+
+    render(){
+        return <div className="box">
+                  {
+                      this.props.items.map((v,i)=>{
+                          return <div key={i}>{v}</div>
+                      })
+                  }
+            </div>
+    }
+}
+
+class App extends React.Component{
+
+    constructor(){
+        super();
+        this.state={
+            leftItems:['Sachin','Dhoni','Kohli','UV','Lara'],
+            rightItems:[]
+        }
+        this.selItem='';
+    }
+
+    fnGetSelItem(item){
+        this.selItem=item;
+    }
+    fnMove=()=>{
+        // get selcted left item : this.selItem
+
+        // remove that selected item from leftItems
+        let _leftItems=this.state.leftItems;
+        let _index=_leftItems.indexOf(this.selItem);
+        _leftItems.splice(_index,1);
+        // add that selected item to rightItems
+        let _rightItems=this.state.rightItems;
+        _rightItems.push(this.selItem);
+
+        this.setState({
+            leftItems:_leftItems,
+            rightItems:_rightItems
+        })
+
+    }
+    render(){
+        return <div>
+                 <Left items={this.state.leftItems} fnGetSelItem={this.fnGetSelItem.bind(this)} />
+                 <button onClick={this.fnMove} className="move-btn">Move</button>
+                 <Right items={this.state.rightItems} />
+                  
+               </div>
+    }
+}
+
+//Before React 18 
+   //ReactDOM.render(<App />,document.getElementById('root'));
+
+   const root=ReactDOM.createRoot(document.getElementById('root'))
+   root.render(<App />)
+</script>

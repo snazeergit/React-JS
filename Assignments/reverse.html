@@ -1,0 +1,40 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+
+
+<script type="text/babel">
+   //prepare content
+   //props, refs, updater,  context, isReactComponent,setState,forceUpdate
+   class App extends React.Component{
+
+        fnKeyUp(){
+            var name= document.querySelector('#name').value
+            var revName=name.split('').reverse().join('');
+            document.querySelector('h3>span').innerText=revName;
+        }
+
+    
+        render(){
+            return <div>
+                    <p>
+                        <b>Name:</b><input id="name" onKeyUp={this.fnKeyUp} />
+                    </p>
+                  
+                    <h3>Result:<span></span> </h3>
+
+                </div>
+        }
+   }
+   
+   //container
+
+   var root=ReactDOM.createRoot(document.getElementById('root'))
+
+   //render content inside the container
+
+   root.render(<App />)
+
+</script>
