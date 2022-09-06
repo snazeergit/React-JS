@@ -16,7 +16,7 @@
             sum: '0'
         }
         */
-   
+
         constructor() {
             super()
             this.state = {
@@ -31,6 +31,11 @@
         fnSum = () => {
             let result = Number(this.n1) + parseInt(this.n2)
             this.setState({ sum: result })
+
+            //if the state variable name(sum) and the value variable(result) 
+            //that we want to set to state variable then you can simply write this way, its called shorthanded notation.
+            /*let sum = Number(this.n1) + parseInt(this.n2)
+            this.setState({ sum })*/
         }
 
         render() {

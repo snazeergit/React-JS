@@ -1,0 +1,81 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>.
+<script src="react-dom.development.js"></script>
+
+<div id="root"></div>
+
+
+<style>
+    .card {
+        font-size: 50px;
+        border: 1px solid red;
+        line-height: 200px;
+        height: 200px;
+        width: 150;
+        text-align: center;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .bg-clr {
+        background: yellow;
+        color: yellow;
+    }
+</style>
+
+<script type="text/babel">
+    class App extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                content: ''
+            }
+            let arr = ['J', 'Q', 'K', 'A'];
+            arr = this.fnRandom(arr);
+            let divs = []
+            arr.forEach((v) => {
+                divs.push(<div class='card bg-clr' >{v}</div>)
+            })
+            setTimeout(() => {
+                this.setState({
+                    content: divs
+                })
+            }, 100);
+        }
+        fnHide() {
+            location.reload();
+        }
+        fnShow() {
+            var cards = document.getElementsByClassName('card');
+            for (var i = 0; i < cards.length; i++) {
+                var card = cards[i];
+                card.classList.remove('bg-clr');
+
+            }
+        }
+        fnRandom(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                var currVal = arr[i];
+                var currIndex = i + 1;
+                var randomIndex = Math.floor(Math.random() * currIndex);
+                arr[i] = arr[randomIndex];
+                arr[randomIndex] = currVal;
+            }
+            return arr;
+        }
+        render() {
+            return <div>
+                <h1>Cards</h1>
+                <input type='button' value='Hide' onClick={this.fnHide.bind(this)} />
+                <input type='button' value='Show' onClick={this.fnShow.bind(this)} />
+                <span >{this.state.content}</span>
+            </div>
+        }
+    }
+
+    //Before React 18 
+    //ReactDOM.render(<App />,document.getElementById('root'));
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<App />)
+</script>

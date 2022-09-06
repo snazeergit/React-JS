@@ -1,0 +1,200 @@
+Srinivas
+
+60 hours--> 70
+
+
+HTML ---> 2
+
+1. why we go for HTML
+2. inline vs block level elements
+3. attributes
+4. inputControls
+5. table,list
+
+CSS--> 4
+
+1. Why we go for CSS 
+2. How many ways can we apply CSS ?
+3. selectors
+4. media queries
+5. postions
+6. bootstrap
+7. Box model
+
+
+JS:
+
+Introduction
+Variables And Methods
+Array Methods
+String Methods
+JSON Object
+Get Reference
+Apply Styles
+Events
+Event Looping
+Debouncing
+Throttling
+Currying
+Async vs defer
+OOPS
+Create Elements
+Attributes
+Set Timeout
+Set Interval
+Browser Storages
+BOM
+Call apply bind
+Closure
+Alert Prompt Confirm
+Bubbling And Capturing
+Event Deligation
+Hoisting
+Exception Handling
+Callbacks
+Promises
+Async Await
+Observables
+Promise Vs Observable
+AJAX
+Generators
+ES6
+ReactBootstrp , MUI
+
+React:
+
+1. Why we go for React ? 
+
+2. How to prepare the templates in react ?
+              components
+			class,functional 
+3. How to handle the events(click,blur, focus,mouse,keyboard) ?
+
+4. How to take the data from inputControls(textbox,password,radio,checkbox,textarea,fileupload) ?
+
+5. How to handle AJAX(XMLHttpRequest, fetch, axios)
+
+6. How to apply styles dynamically (inline, class)
+
+7. node js 
+
+8. MongoDB
+
+9. var vs let  vs const  vs this vs state vs props vs refs 
+
+10. commnunication b/w components (parent-child , child - parent)
+
+11. context api 
+
+12. lifecycle methods
+
+13. reusable components 
+
+14. create and publish your own components using npm
+
+15. lists and keys
+
+16. Exception Handling
+
+17. Higher Order components
+
+18. Hanlde Routing in react 
+
+19. Build and Deploy Application (Godaddy, AWS, Heroku, Azure, GIT)
+
+20. test cases
+
+
+Redux :
+
+1. How implement Redux in your react Application
+
+2. actions, reducer, store 
+
+3. redux thunk 
+
+4. redux Saga 
+
+React Hooks: 
+1. useState
+2. useEffect
+3. useRef
+4. useContext
+5. useReducer
+6. useMemo
+7. useCallback
+8. useTransistion
+
+
+EtoE Application
+
+client(React +Redux)  + Server(node with express + jwt) + MongoDB 
+
+
+
+Next -- 
+
+
+React Native --
+
+
+React Typescript --
+
+
+
+React JS @ 9:00 AM (IST) by Mr.Srinu
+
+Day-1 https://youtu.be/ajusJi6cijM
+Day-2 https://youtu.be/sJyY8ocQABs
+Day-3 https://youtu.be/LCvtJgYcyYI
+Day-4 https://youtu.be/kOKiP0tQWiM
+Day-5 https://youtu.be/cCIlwKpkQiw
+Day-6 https://youtu.be/SVRe1MZt2AM
+Day-7 https://youtu.be/YfyjY3PWTxs
+Day-8 https://youtu.be/5Uh6IzsLucc
+Day-9 https://youtu.be/JWMTV1DtMqY
+
+
+
+
+
+
+
+
+Dear Students please pay the fee for ________(Course name)_____ (time) by Mr. __________ Fee  Rs. _______
+
+Bank Details 
+Name: Naresh i Technologies
+A/C No. 50200022639833     
+Bank: HDFC
+A/C Type: Current Account
+IFSC Code: HDFC0001627
+MICR Code: 500240035
+Branch Code: 001627
+Branch:  Ameerpet
+
+Note: If you want to use Phonepe or Google Pay then follow the below steps.
+
+You can find the option Bank Transfer in Phonepe and Google pay. There you can enter our bank account number and you can transfer the amount.  Please mention your Name on the receipt and send a email once the payment is done to support@nareshit.com.
+  
+For any Queries, You can can Call us on +91-8179191999 or email us to support@nareshit.com 
+
+Please share your feedback to  Admin
+
+
+
+Duration: 45 Days (Daily 1 Hour).
+Offer Fee: Rs.8,000/- (With Videos).  
+                  RS.5000/- (Without Videos)
+Course Content Link: https://nareshit.in/reactjs-training/
+
+
+https://classroom.google.com/c/NDk3MDY4NjI5ODUw?cjc=ihswde7
+
+
+https://chat.whatsapp.com/IwWIchAMviQEbdlBiG0IG9
+
+
+
+
+
