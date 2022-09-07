@@ -1,0 +1,136 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="axios.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    const Table = (props) => {
+        const { data, headers, columns } = props
+        return <table border="1px">
+            <thead>
+                <tr>
+                    {
+                        headers.map((value, index) => {
+                            return <th key={index}>{value}</th>
+                        })
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    data.map((obj, index) => {
+                        const { n, m, l } = obj
+                        return <tr key={index}>
+                            {
+                                columns.map((value, index) => {
+                                    //here vlaue contains the Keys 
+                                    return <td key={index}>{obj[value]}</td>
+                                })
+                            }
+                        </tr>
+                    })
+                }
+            </tbody>
+        </table>
+    }
+
+    const App = () => {
+
+        //XMLHttpRequest+open+send
+        const fnGetPhotos = () => {
+            let httpReq = new XMLHttpRequest()
+
+            //preparing request
+            httpReq.open('get', 'http://jsonplaceholder.typicode.com/photos')
+
+            //sending the request
+            httpReq.send()
+
+            //invoked automatically when the above function returns success
+            httpReq.onload = () => {
+                let res = httpReq.responseText
+                res = JSON.parse(res)
+                console.log(res)
+            }
+
+            //invoked automatically when the above function returns failure
+            httpReq.onerror = () => {
+                let err = httpReq.responseText
+                err = JSON.parse(err)
+                console.log(err)
+            }
+
+        }
+
+        //fetch+then
+        const fnGetPosts1 = () => {
+            //fetch method return Promise obj so handle it we can use either then() method or await keyword
+            fetch('http://jsonplaceholder.typicode.com/posts', { method: 'get' })
+                .then(
+                    (res) => {
+                        //res is not in a expected format hence we are converting it into json format using json() method
+                        //this method returns a Promise obj again hence then is included below.
+                        return res.json()
+                    },
+                    (err) => {
+                        return err.json()
+                    }
+                )
+                //res.json() method return Promise obj so another then is included
+                .then(
+                    (res) => { console.log(res) },
+                    (err) => { console.log(err) }
+                )
+
+        }
+
+        //fetch+await
+        //function that uses await keyword must be async so included in definition
+        const fnGetPosts2 = async () => {
+            //fetch method return Promise obj so handle it with await keyword and 
+
+            let res = await fetch('http://jsonplaceholder.typicode.com/posts', { method: 'get' })
+            res = await res.json()
+            console.log(res)
+        }
+        //Using axios library axios+then
+        const fnGetComments1 = () => {
+            axios.get('http://jsonplaceholder.typicode.com/comments')
+                .then(
+                    (res) => { console.log(res.data) },
+                    (err) => { console.log(err.data) }
+                )
+        }
+        //Using axios library axios+await
+        const fnGetComments2 = async () => {
+            let result = await axios.get('http://jsonplaceholder.typicode.com/comments')
+            console.log(result.data)
+        }
+
+        return <div>
+            <button onClick={fnGetPhotos}>Get Photos</button>
+            <button onClick={fnGetPosts1}>Get Posts1</button>
+            <button onClick={fnGetPosts2}>Get Posts2</button>
+            <button onClick={fnGetComments1}>Get Comments1</button>
+            <button onClick={fnGetComments2}>Get Comments2</button>
+        </div>
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>
+
+<!--
+Important Points:
+-----------------
+
+Client can send a request to server using AJAX in three ways.
+    1. Using XMLHttpRequest----using onload() and orerror()
+    2. Using fetch()-----------return a Promise object
+    3. Using axios api---------return a Promise object
+    
+Promise can be handled using then() and await keyword
+
+    -->
