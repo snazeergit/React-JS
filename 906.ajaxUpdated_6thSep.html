@@ -21,7 +21,6 @@
             <tbody>
                 {
                     data.map((obj, index) => {
-                        const { n, m, l } = obj
                         return <tr key={index}>
                             {
                                 columns.map((value, index) => {
@@ -38,6 +37,8 @@
 
     const App = () => {
 
+        const [tblData, setTblData] = React.useState({ h: [], d: [], c: [] })
+
         //XMLHttpRequest+open+send
         const fnGetPhotos = () => {
             let httpReq = new XMLHttpRequest()
@@ -52,6 +53,11 @@
             httpReq.onload = () => {
                 let res = httpReq.responseText
                 res = JSON.parse(res)
+                setTblData({
+                    h: ['ID','TITLE', 'URL'],
+                    d: res,
+                    c: ['id','title', 'url',]
+                })
                 console.log(res)
             }
 
@@ -80,7 +86,14 @@
                 )
                 //res.json() method return Promise obj so another then is included
                 .then(
-                    (res) => { console.log(res) },
+                    (res) => {
+                        setTblData({
+                            h: ['TITLE', 'BODY'],
+                            d: res,
+                            c: ['title', 'body']
+                        })
+                        console.log(res)
+                    },
                     (err) => { console.log(err) }
                 )
 
@@ -93,20 +106,44 @@
 
             let res = await fetch('http://jsonplaceholder.typicode.com/posts', { method: 'get' })
             res = await res.json()
+            setTblData({
+                h: ['TITLE', 'BODY'],
+                d: res,
+                c: ['title', 'body']
+            })
             console.log(res)
         }
         //Using axios library axios+then
         const fnGetComments1 = () => {
             axios.get('http://jsonplaceholder.typicode.com/comments')
                 .then(
-                    (res) => { console.log(res.data) },
-                    (err) => { console.log(err.data) }
+                    (res) => {
+                        //res is not in a expected format its available inside data attribute hence we are fetching using res.data
+                        res = res.data
+                        setTblData({
+                            h: ['ID', 'NAME', 'EMAIL', 'BODY'],
+                            d: res,
+                            c: ['id', 'name', 'email', 'body']
+                        })
+                        console.log(res)
+                    },
+                    (err) => {
+                        err = err.data
+                        console.log(err)
+                    }
                 )
         }
         //Using axios library axios+await
         const fnGetComments2 = async () => {
-            let result = await axios.get('http://jsonplaceholder.typicode.com/comments')
-            console.log(result.data)
+            let res = await axios.get('http://jsonplaceholder.typicode.com/comments')
+            //res is not in a expected format its available inside data attribute hence we are fetching using res.data
+            res = res.data
+            setTblData({
+                h: ['ID', 'NAME', 'EMAIL', 'BODY'],
+                d: res,
+                c: ['id', 'name', 'email', 'body']
+            })
+            console.log(res.data)
         }
 
         return <div>
@@ -115,6 +152,10 @@
             <button onClick={fnGetPosts2}>Get Posts2</button>
             <button onClick={fnGetComments1}>Get Comments1</button>
             <button onClick={fnGetComments2}>Get Comments2</button>
+            <Table
+                headers={tblData.h}
+                data={tblData.d}
+                columns={tblData.c} />
         </div>
     }
 
@@ -125,12 +166,10 @@
 <!--
 Important Points:
 -----------------
-
 Client can send a request to server using AJAX in three ways.
     1. Using XMLHttpRequest----using onload() and orerror()
     2. Using fetch()-----------return a Promise object
     3. Using axios api---------return a Promise object
     
 Promise can be handled using then() and await keyword
-
-    -->
+-->
