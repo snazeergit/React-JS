@@ -1,0 +1,72 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    const App = () => {
+
+        const fnGetPhotos = () => {
+            let httpReq = new XMLHttpRequest()
+
+            //preparing request
+            httpReq.open('get', 'http://jsonplaceholder.typicode.com/photos')
+
+            //sending the request
+            httpReq.send()
+
+            //invoked automatically when the above function returns success
+            httpReq.onload = () => {
+                let res = httpReq.responseText
+                res = JSON.parse(res)
+                console.log(res)
+            }
+            //invoked automatically when the above function returns failure
+            httpReq.onerror = () => {
+                let err = httpReq.responseText
+                err = JSON.parse(err)
+                console.log(err)
+            }
+
+        }
+
+        const fnGetPosts = async() => {
+            //fetch method return Promise obj so handle it we can use either then() method or await keyword
+            /*fetch('http://jsonplaceholder.typicode.com/posts', { method: 'get' })
+                .then(
+                    (res) => {
+                        //res is not in a expected format hence we are converting it into json format using json() method
+                        //return res
+                        //this method returns a Promise obj again hence then is included below.
+                        return res.json()
+                    },
+                    (err) => {
+                        return err.json()
+                    }
+                )
+                //res.json() method return Promise obj so another then is included
+                .then(
+                    (res) => { },
+                    (err) => { }
+                )*/
+
+               const res= await fetch('http://jsonplaceholder.typicode.com/posts', {method:'get'})
+               res=res.json()
+        }
+        const fnGetComments = async() => {
+
+
+        }
+
+        return <div>
+            <button onClick={fnGetPhotos}>Get Photos</button>
+            <button onClick={fnGetPosts}>Get Posts</button>
+            <button onClick={fnGetComments}>Get Comments</button>
+        </div>
+    }
+
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+</script>
