@@ -1,0 +1,49 @@
+<!--
+    Positions:
+        1.static  (default)    can not apply left,right,top,bottom  | doesn't remove element space from DOM | no change in element behavior | NA
+        2.absolute             can apply left,right,top,bottom      | remove element space from DOM         | change in element behavior    | the nearest parent with non-static postion as reference 
+        3.relative             can apply left,right,top,bottom      | doesn't remove element space from DOM | no change in element behavior | current position as ref 
+        4.fixed                can apply left,right,top,bottom      | doesn't remove element space from DOM | change in element behavior    | viewport(visible are) position as ref  
+        5.sticky               can apply left,right,top,bottom      | doesn't remove element space from DOM | no change in element behavior | dynamically stick to a position with scroll  
+-->
+
+<!-- -->
+
+<!-- 
+    static:
+    In HTML, by default all the elements position is static, if no position is specified then its considerd as static
+    If the element position is static then we can not apply 4 css properties(left, right, top, bottom)
+    Element behavior will not change 
+-->
+
+<!--
+    absolute:
+    we can apply 4 css properties(left, right, top, bottom).
+    element's space will be removed from the DOM,hence the next element in the row will overlap with absolute elements unless we apply any of the 4 css properties
+    Elements behaviour chang from Block level to inline element.
+    It takes its parent element(parent must be holding a non-static position else it will take next level parent that has non-static position) as a ref when its applied with any of these 4 css properties(left, right, top, bottom).
+-->
+
+<!--
+    relative:
+    we can apply 4 css properties(left, right, top, bottom).
+    elements's space will not be removed from the DOM.
+    elements behaviour will not change from Block level to inline element.
+    It takes its current position as a ref when its applied with any of these 4 css properties(left, right, top, bottom).
+-->
+
+<!--
+    fixed:
+    we can apply 4 css properties(left, right, top, bottom).
+    elements's space will not be removed from the DOM.
+    elements behaviour will change from Block level to inline element.
+    It takes its viewport(visible are in browser) position as a ref when its applied with any of these 4 css properties(left, right, top, bottom).
+-->
+
+<!--
+    sticky:
+    we can apply 4 css properties(left, right, top, bottom).
+    elements's space will not be removed from the DOM.
+    elements behaviour will not change from Block level to inline element.
+    It takes its parent position as a ref and dynamically stick to a position with scroll when its applied with any of these 4 css properties(left, right, top, bottom).
+-->

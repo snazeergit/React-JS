@@ -1,0 +1,17 @@
+<!--
+    absolute:
+    we can apply 4 css properties(left, right, top, bottom).
+    element's space will be removed from the DOM,hence the next element in the row will overlap with absolute elements 
+        unless we apply any of the 4 css properties
+    Elements behaviour chang from Block level to inline element.
+    It takes its parent element(parent must be holding a non-static position else it will take next level parent 
+        that has non-static position) as a ref when its applied with any of these 4 css properties(left, right, top, bottom).
+-->
+
+<div style="position: absolute;">kohli</div>
+<!--kholi's space is removed from DOM hence Dravid will overlap with it-->
+<div>dravid</div>
+<div style="position: absolute;left: 100px;">sachin</div>
+<!--sachin will be 100px away from body's left border-->
+<div style="position: absolute;left:100px;top: 300px;">rahul</div>
+<!--Rahul will be 100px away from body's left border and 300px below from body's top border-->
