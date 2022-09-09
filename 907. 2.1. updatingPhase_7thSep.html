@@ -1,0 +1,55 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    const App = () => {
+
+        const [name, setName] = React.useState('Dilshad')
+
+        //block-1
+        React.useEffect(() => {
+            console.log('Mounting phase...')
+        }, [])
+
+        //block-2
+        //useEffect is one hook that we use in all 3 phases of the component
+        //So to make this code work only when the state variable 'name' is updated we keep the if condition.
+        React.useEffect(() => {
+            /*  
+                Condition to avoid the updating phase code getting invoked when this scipt loaded for the first time.
+                it will only pass thourgh when we click on the Update name button that will update the name to Nazeer 
+                which is not equals to Dilshad.
+            */
+            if (name != 'Dilshad') {
+                console.log('updating phase...')
+            }
+        }, [name])
+
+        const fnClick = () => {
+            setName('Nazeer')
+        }
+        return <div>
+            <h2>Goto inspect and console to see the output</h2>
+            {console.log('Content Loaded')}
+            <h1> Name : {name}</h1>
+            <button onClick={fnClick}>Update Name</button>
+        </div>
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>
+
+<!--
+    When we click on the button the handler method mapped with the button will get executed and
+    it will intern invoke the setName() to update the state varible name.
+    When state varible updated, render() will be called or return content will be loaded again in DOM
+    since we are using useEffect hook to detect the changes in the state variable, block-2 it will also get invoked by React after the 
+    changes rendered to the DOM or changes loaded thats when the block-2 stmts or updating phase will get executed.
+    
+    Note: update phase executed only after the change in the state varibles loaded in the DOM.
+-->
+

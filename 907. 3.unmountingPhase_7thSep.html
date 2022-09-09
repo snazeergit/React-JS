@@ -1,0 +1,49 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    const A = () => {
+
+        React.useEffect(() => {
+            console.log('Mounting phase...')
+        }, [])
+
+        React.useEffect(() => {
+            return () => {
+                console.log('Going to unmounting phase...')
+            }
+        }, [])
+
+        return <div>
+            <h3>A Component</h3>
+        </div>
+    }
+
+    const App = () => {
+
+        const [show, setShow] = React.useState(true)
+        const fnClick = () => {
+            setShow(!show)
+        }
+
+        return <div>
+            <h2>Goto inspect and console to see the output</h2>
+            <h1>App Component</h1>
+            {/* 
+                when show is false then A component will not be rendered i.e, 
+                it is unmounted as it is initially mounted with show with true value.
+            */}
+            {show && <A />}
+            <button onClick={fnClick}>Toggle</button>
+            {console.log('Content Loaded')}
+        </div>
+
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

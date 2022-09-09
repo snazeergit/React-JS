@@ -1,0 +1,56 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    //we need another component to demonstrate unmounting phase as it will get triggered when we unmount any component
+    //We can not unmount the App comp from where the whole execution starts.
+    const A = () => {
+        React.useEffect(() => {
+            return () => {
+                console.log('Going to unmounting phase...')
+            }
+        }, [])
+
+    }
+
+    const App = () => {
+
+        //count value has been initialized with zero
+        const [count, setCount] = React.useState(0)
+        const [flag, setFlag] = React.useState(true)
+
+        React.useEffect(() => {
+            console.log('Mounting phase....')
+        }, [])
+
+        React.useEffect(() => {
+            //to check if the state variable count updated(anything part from initial value i.e. zero)?
+            if (count != 0) {
+                console.log('updating phase...')
+            }
+        }, [count])
+
+        const fnUpdate = () => {
+            setCount(20)
+        }
+
+        const fnUnmount = () => {
+            setFlag(false)
+        }
+
+        return <div>
+            <div> Count: {count}</div>
+            {console.log('content loaded')}
+            {flag && <A />}
+            <button onClick={fnUpdate}>Update</button>
+            <button onClick={fnUnmount}>Unmount</button>
+        </div>
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

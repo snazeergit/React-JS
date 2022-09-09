@@ -1,0 +1,21 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    const App = () => {
+
+        React.useEffect(()=>{
+            console.log('Mounting phase...')
+        },[])
+        return <div>
+            <h2>Goto inspect and console to see the output</h2>
+            {console.log('Content Loaded')}
+        </div>
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>
