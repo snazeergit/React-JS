@@ -70,7 +70,7 @@
 
         }
 
-        //fetch+then
+        //fetch+.then()
         const fnGetPosts1 = () => {
             //fetch method return Promise obj so handle it we can use either then() method or await keyword
             fetch('http://jsonplaceholder.typicode.com/posts', { method: 'get' })
@@ -99,7 +99,7 @@
 
         }
 
-        //fetch+await
+        //fetch+await keyword
         //function that uses await keyword must be async so included in definition
         const fnGetPosts2 = async () => {
             //fetch method return Promise obj so handle it with await keyword and 

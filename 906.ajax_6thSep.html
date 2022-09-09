@@ -18,14 +18,14 @@
             //sending the request
             httpReq.send()
 
-            //invoked automatically when the above function returns success
+            //onload is a callback invoked automatically when the above function returns success
             httpReq.onload = () => {
                 let res = httpReq.responseText
                 res = JSON.parse(res)
                 console.log(res)
             }
 
-            //invoked automatically when the above function returns failure
+            //onerror is a callback invoked automatically when the above function returns failure
             httpReq.onerror = () => {
                 let err = httpReq.responseText
                 err = JSON.parse(err)
@@ -34,7 +34,7 @@
 
         }
 
-        //fetch+then
+        //fetch+.then()
         const fnGetPosts1 = () => {
             //fetch method return Promise obj so handle it we can use either then() method or await keyword
             fetch('http://jsonplaceholder.typicode.com/posts', { method: 'get' })
@@ -56,7 +56,7 @@
 
         }
 
-        //fetch+await
+        //fetch+await keyword
         //function that uses await keyword must be async so included in definition
         const fnGetPosts2 = async () => {
             //fetch method return Promise obj so handle it with await keyword and 
