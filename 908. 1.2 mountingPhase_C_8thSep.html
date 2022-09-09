@@ -1,0 +1,36 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    class App extends React.Component {
+
+        //constructor will be called first as the react first creates an obj of the App class to invoke the render()
+        //constructor first followed by render() then mounting phase...
+        constructor() {
+            super()
+            console.log('constructor called')
+        }
+        
+        //This methos will invoked internally after the render() executed i.e, content is loaded.
+        componentDidMount = () => {
+            console.log('mounting phase....')
+        }
+
+        render = () => {
+
+            { console.log('Content loaded') }
+            return <div>
+                <p>Goto inspect and console tab to see componenet phases invoked</p>
+                <h2>Welcome</h2>
+            </div>
+        }
+
+
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

@@ -1,0 +1,51 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    class App extends React.Component {
+
+        //constructor will be called first as the react first creates an obj of the App class to invoke the render()
+        //constructor first followed by render() then mounting phase...
+        constructor() {
+            super()
+            console.log('constructor called')
+            this.state={
+                name:'Sachin'
+            }
+        }
+        
+        //This methos will invoked internally after the render() executed i.e, content is loaded.
+        componentDidMount = () => {
+            console.log('mounting phase....')
+        }
+
+        //This methos will invoked internally after any state variable is updated and rendered to DOM or setState() is invoked
+        componentDidUpdate = () => {
+            console.log('updating phase....')
+        }
+
+        fnClick=()=>{
+            this.setState({
+                name:'King Kohli'
+            })
+        }
+
+        render = () => {
+
+            { console.log('Content loaded') }
+            return <div>
+                <p>Goto inspect and console tab to see componenet phases invoked</p>
+                <h2>Welcome, {this.state.name}</h2>
+                <button onClick={this.fnClick}>Update</button>
+            </div>
+        }
+
+
+    }
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

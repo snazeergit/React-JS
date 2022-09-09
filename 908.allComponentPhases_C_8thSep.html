@@ -1,0 +1,60 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    //we need another component to demonstrate unmounting phase as it will get triggered when we unmount any component
+    //We can not unmount the App comp from where the whole execution starts.
+    class A extends React.Component {
+        componentWillUnmount = () => {
+            console.log('about to umnount..')
+        }
+        render = () => {
+            return <h2>A Component</h2>
+        }
+    }
+
+    class App extends React.Component {
+
+        state = {
+            name: 'Nazeer',
+            flag: true
+        }
+
+        componentDidMount = () => {
+            console.log('mounting phase..')
+        }
+        
+        componentDidUpdate = () => {
+            console.log('updating phase..')
+        }
+
+        fnUpdate = () => {
+            this.setState({
+                name: 'King Kohli'
+            })
+
+        }
+        fnUnmount = () => {
+            this.setState({
+                flag: !this.state.flag
+            })
+        }
+        render = () => {
+            return <div>
+                <div> Name: {this.state.name}</div>
+                {console.log('content loaded')}
+                {this.state.flag && <A />}
+                <button onClick={this.fnUpdate}>Update</button>
+                <button onClick={this.fnUnmount}>Unmount</button>
+            </div>
+        }
+
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>

@@ -1,0 +1,53 @@
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    class A extends React.Component {
+
+        //This methos will invoked internally before the component is about to unmount.
+        componentWillUnmount=()=>{
+            console.log('About to unmount...')
+        }
+
+        render = () => {
+            return <div>
+                <h3>A Component</h3>
+            </div>
+        }
+
+    }
+
+    class App extends React.Component {
+        state = {
+            flag: true
+        }
+
+        fnClick = () => {
+            this.setState({
+                //this will make the flag to switch between true and false 
+                flag: !this.state.flag
+            })
+        }
+
+        render = () => {
+            return <div>
+                <h2>Goto inspect and console to see the output</h2>
+                <h1>App Component</h1>
+                {/* 
+                    when show is false then A component will not be rendered i.e, 
+                    it is unmounted as it is initially mounted with show with true value.
+                */}
+                {this.state.flag && <A />}
+                <button onClick={this.fnClick}>Toggle</button>
+                {console.log('Content Loaded')}
+            </div>
+        }
+    }
+
+    var obj = ReactDOM.createRoot(document.getElementById('root'))
+    obj.render(<App />)
+
+</script>
