@@ -4,7 +4,6 @@
 
 <div id="root"></div>
 
-
 <style>
     .card {
         font-size: 50px;
@@ -18,7 +17,7 @@
     }
 
     .bg-clr {
-        background: yellow;
+       /* background: yellow;*/
         color: yellow;
     }
 </style>
@@ -30,9 +29,11 @@
             this.state = {
                 content: ''
             }
-            let arr = ['J', 'Q', 'K', 'A'];
+            let arr = ['A', 'B', 'C', 'D'];
+            //this will give you the shaffled array
             arr = this.fnRandom(arr);
             let divs = []
+            //inserting elements in div or a box
             arr.forEach((v) => {
                 divs.push(<div class='card bg-clr' >{v}</div>)
             })
@@ -57,17 +58,23 @@
             for (var i = 0; i < arr.length; i++) {
                 var currVal = arr[i];
                 var currIndex = i + 1;
+                // this will generate a number from 0 to 3
                 var randomIndex = Math.floor(Math.random() * currIndex);
+                //swapping the element in the current index with the element in the random index
                 arr[i] = arr[randomIndex];
                 arr[randomIndex] = currVal;
+                //current array
+                console.log(arr)
+                //elements to be swapped
+                console.log(arr[i]+ ":" +arr[randomIndex] )
             }
             return arr;
         }
         render() {
             return <div>
                 <h1>Cards</h1>
-                <input type='button' value='Hide' onClick={this.fnHide.bind(this)} />
-                <input type='button' value='Show' onClick={this.fnShow.bind(this)} />
+                <button onClick={this.fnHide.bind(this)}>Hide</button>
+                <button onClick={this.fnShow.bind(this)}>Show</button>
                 <span >{this.state.content}</span>
             </div>
         }
