@@ -1,4 +1,4 @@
 //initial data to reducer function
-export const initData={
+export const init={
     name:''
 }

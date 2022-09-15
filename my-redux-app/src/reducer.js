@@ -1,11 +1,11 @@
 //reducer function
-import {initData} from './init'
+import {init} from './init'
 
-//currentData is initialized with initData from init.js and newData is updated with the data from the A comp text box
-export const myReducer=(currentData=initData, newData)=>{
-    //merging current data with the newData (data entered from A comp textbox)
-    currentData={...currentData, name:newData.name}
-    return currentData
+//state is initialized with initData from init.js and action is updated with the data from the A comp text box
+export const myReducer=(state=init, action)=>{
+    //merging state with the action (data entered from A comp textbox)
+    state={...state, name:action.payload}
+    return state
 }
 
 /*

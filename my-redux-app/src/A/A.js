@@ -11,7 +11,7 @@ class A extends React.Component {
     let name = this.nameRef.current.value
     store.dispatch({
       type: '',
-      name
+      payload:name
     })
   }
   render() {

@@ -4,7 +4,7 @@ import React from "react";
 function template() {
   return (
     <div className="c">
-      <h1>C : ...!</h1>
+      <h1>C : {this.props.n}</h1>
     </div>
   );
 };
