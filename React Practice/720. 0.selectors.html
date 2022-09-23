@@ -1,0 +1,88 @@
+https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Selectors_Tasks#task_1
+
+TASK#1
+------
+h1{
+	color: blue
+}
+h2{
+	color: white;
+	background: blue
+}
+span{
+	font-size:50px
+}
+
+
+TASK#2
+------
+h1{
+	font-size: 35px
+}
+[id=special]{
+	background: yellow
+}
+.alert{
+	border:1px solid;
+}
+.stop{
+	background: red
+}
+.go{
+	background: green
+}
+    
+
+TASK#3
+------
+a:link {
+	color: orange
+}
+a:visited {
+	color: green;
+}
+a:hover{
+	text-decoration: none;
+}
+p:first-child{
+	font-size: 150%;
+}
+p:first-child::first-line{
+	color: red
+}
+tr:nth-child(2),tr:nth-child(4),tr:nth-child(6){
+	background: #333;
+	color: white
+}
+
+p:first-child::first-line: selects first line of the <p> element that is first child to any tag
+
+
+TASK#4
+------
+h2+p{
+	color: red
+}
+.list>li{
+	border-bottom: 2px solid grey;
+	list-style: none
+}
+
+
+TASK#5
+------
+a{
+    border: 5px solid grey;
+}
+[href="https://example.com"]{
+    border-color: green;
+}
+[title]{
+	border-color: pink;
+}
+a[href*="contact"]  {
+	border-color: orange;
+}    
+    
+	
+a[href*="contact"] : select all the <a> tags with an href attribute that contains the word 'contact' somewhere in its value
