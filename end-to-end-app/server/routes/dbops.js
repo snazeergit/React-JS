@@ -2,6 +2,10 @@ var express = require('express')
 var router = express.Router()
 var mongodb = require('mongodb');
 var getDbCon = require('../common/getDbCon');
+var validateToken= require('../common/validateToken');
+var jwt=require('jsonwebtoken')
+
+
 //Local Mongo url
 //const url = 'mongodb://localhost:27017'
 
@@ -48,7 +52,7 @@ router.get('/getall', function (req, res, next) {
 })
 
 //http://localhost:2020/dbops/get-stu-id, get
-router.get('/get-stu-id', function (req, res, next) {
+router.get('/get-stu-id', validateToken , function (req, res, next) {
     var id = mongodb.ObjectId(req.query.id)
     getDbCon(res, function (db) {
         var collection = db.collection('Students')
@@ -63,12 +67,16 @@ router.get('/get-stu-id', function (req, res, next) {
 })
 
 //http://localhost:2020/dbops/auth, post
-router.post("/auth", function (req, res, next) {
+router.post("/auth",function (req, res, next) {
     var data = req.body.payload
     getDbCon(res, function (db) {
         var collection = db.collection('Students')
         collection.findOne(data)
             .then(function (result) {
+                if(result){
+                    var token=jwt.sign(data,'appToken')
+                    result.token=token
+                }
                 res.send(result)
             })
             .catch(function (err) {
@@ -79,7 +87,7 @@ router.post("/auth", function (req, res, next) {
 })
 
 //http://localhost:2020/dbops/update-stu, put
-router.put("/update-stu", function (req, res, next) {
+router.put("/update-stu", validateToken,function (req, res, next) {
     var id = mongodb.ObjectId(req.query.id)
     var data = req.body.payload
 
@@ -97,7 +105,7 @@ router.put("/update-stu", function (req, res, next) {
 })
 
 //http://localhost:2020/dbops/delete-stu, delete
-router.delete("/delete-stu", function (req, res, next) {
+router.delete("/delete-stu", validateToken ,function (req, res, next) {
     var id = mongodb.ObjectId(req.query.id)
     getDbCon(res, function (db) {
         var collection = db.collection("Students")
