@@ -2,8 +2,9 @@ import './Register.css'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Input } from '../../common/Input/Input'
-import {Select} from '../../common/Select/Select'
-import {TextArea} from '../../common/TextArea/TextArea'
+import { Select } from '../../common/Select/Select'
+import { TextArea } from '../../common/TextArea/TextArea'
+import { regFormValidations } from '../../validations/regFormValidations'
 
 const inputValues = [
   {
@@ -11,8 +12,8 @@ const inputValues = [
     type: 'text',
     tag: "input",
     name: 'uid',
-    val: 'u1',
-    errorMsg: 'Please enter the Username',
+    val: '',
+    errorMsg: '',
     isShowError: false
   },
   {
@@ -20,8 +21,8 @@ const inputValues = [
     type: "password",
     tag: "input",
     name: "pwd",
-    val: 'p1',
-    errorMsg: 'Please enter the Password',
+    val: '',
+    errorMsg: '',
     isShowError: false
   },
   {
@@ -29,8 +30,8 @@ const inputValues = [
     type: "number",
     tag: "input",
     name: "phone",
-    val: '123',
-    errorMsg: 'Please enter the Phone number',
+    val: '',
+    errorMsg: '',
     isShowError: false
   },
   {
@@ -38,10 +39,10 @@ const inputValues = [
     type: "radio",
     tag: "input",
     name: "gender",
-    val: 'F',
+    val: '',
     values: ['M', 'F'],
     options: ['Male', 'Female'],
-    errorMsg: 'Please select the gender',
+    errorMsg: '',
     isShowError: false
   },
   {
@@ -49,28 +50,28 @@ const inputValues = [
     type: "checkbox",
     tag: "input",
     name: "hobbies",
-    val: 'CRIC,HOC',
-    values: ['CRIC', 'FB','HOC'],
+    val: '',
+    values: ['CRIC', 'FB', 'HOC'],
     options: ['Cricket', 'Football', 'Hockey'],
-    errorMsg: 'Please select the hobbies',
+    errorMsg: '',
     isShowError: false
   },
   {
     label: "Country",
     tag: "select",
     name: "country",
-    val: 'Pak',
-    values: ['Ind', 'Pak','Chi'],
+    val: '',
+    values: ['Ind', 'Pak', 'Chi'],
     options: ['India', 'Pakistan', 'China'],
-    errorMsg: 'Please select the country',
+    errorMsg: '',
     isShowError: false
   },
   {
     label: "Address",
     tag: "textarea",
     name: "address",
-    val: 'Hyderabad',
-    errorMsg: 'Please enter the address',
+    val: '',
+    errorMsg: '',
     isShowError: false
   }
 ]
@@ -80,7 +81,7 @@ export const Register = () => {
 
   useEffect(() => {
     fnPrepareTemplate()
-  },[])
+  }, [])
 
   const fnPrepareTemplate = () => {
     let inputControlsArr = inputValues.map((obj) => {
@@ -96,12 +97,34 @@ export const Register = () => {
     setTemplate(inputControlsArr)
   }
 
-  const fnChange = () => {
+  const fnChange = (eve) => {
+    const { name, value, type, checked, id } = eve.target
+    let inputObj = inputValues.find((obj) => {
+      return obj.name == name
+    })
+    if (type == 'checkbox') {
+     
+      let selHobbies = []
+      if (inputObj.val) {
+        selHobbies = inputObj.val.split(',')
+      }
+      if (checked) {
+        selHobbies.push(id)
 
+      } else {
+        selHobbies.splice(selHobbies.indexOf(id), 1)
+      }
+      inputObj.val = selHobbies.join()
+    } else {
+      inputObj.val = value
+    }
+    inputObj.errorMsg = ''
+    regFormValidations(inputObj)
+    fnPrepareTemplate()
   }
 
-  const fnRegister = () => {
-
+  const fnRegister = (eve) => {
+    
   }
 
   return (

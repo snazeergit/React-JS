@@ -27,7 +27,7 @@ export const Login = () => {
     const [template, setTemplate] = useState('');
 
     useEffect(() => {
-        prepareTemplate()
+        fnPrepareTemplate()
     }, [])
 
     const fnChange = (eve) => {
@@ -40,10 +40,10 @@ export const Login = () => {
         if (!value) {
             inputObj.isShowError = true
         }
-        prepareTemplate()
+        fnPrepareTemplate()
     }
 
-    const prepareTemplate = () => {
+    const fnPrepareTemplate = () => {
         let inputControlsArr = inputValues.map((obj) => {
             return <Input data={{ ...obj, fnChange }} />
         })
@@ -60,7 +60,7 @@ export const Login = () => {
         })
 
         if (!isFormValid) {
-            prepareTemplate()
+            fnPrepareTemplate()
         } else {
             alert('send request to the server')
         }

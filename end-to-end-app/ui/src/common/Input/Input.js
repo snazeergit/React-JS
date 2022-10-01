@@ -12,12 +12,12 @@ export const Input = (props) => {
                 return <input onChange={fnChange} className='form-control' type={type} name={name} value={val} />
             case 'radio':
                 return options.map((opt, index) => {
-                    return <React.Fragment><input checked={values[index]==val} onChange={fnChange} type={type} name={name} value={val} /><b className='me-3'>{opt}</b></React.Fragment>
+                    return <React.Fragment><input checked={values[index]==val} onChange={fnChange} type={type} name={name} value={values[index]} /><b className='me-3'>{opt}</b></React.Fragment>
                 })
                 case 'checkbox':
                     //let checkedValues=val.split(,)
                 return options.map((opt, index) => {
-                    return <React.Fragment><input className='me-3' checked={val.includes(values[index])} onChange={fnChange} type={type} name={name} value={val} /><b className='me-3'>{opt}</b></React.Fragment>
+                    return <React.Fragment><input checked={val.includes(values[index])} onChange={fnChange} type={type} name={name} id={values[index]} value={val} /><b className='me-3'>{opt}</b></React.Fragment>
                 })
         }
     }
