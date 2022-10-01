@@ -2,7 +2,7 @@ import "./E.css";
 import React from "react";
 
 function template() {
-  const [nameReducer, locReducer] = this.state.data
+  const {nameReducer, locReducer} = this.state.data
   return (
     <div className="e">
       <h1>E</h1>

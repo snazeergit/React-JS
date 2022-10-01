@@ -12,7 +12,7 @@ class E extends React.Component {
   componentDidMount() {
     //invoked when store changes found
     appStore.subscribe(() => {
-      //fetching latest data from store
+      //updating state variable with the latest data from store
       this.setState({ data: appStore.getState() })
     })
   }
