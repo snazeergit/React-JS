@@ -1,7 +1,7 @@
 export const initName={
-    name:''
+    name:'nazeer'
 }
 
 export const initLoc={
-    loc:''
+    loc:'nellore'
 }

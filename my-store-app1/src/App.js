@@ -4,6 +4,7 @@ import A from './A/index'
 import B from './B/index'
 import C from './C/index'
 import D from './D/index'
+import E from './E/index'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <B/>
       <C/>
       <D/>
+      <E/>
     </div>
   );
 }
