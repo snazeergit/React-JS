@@ -1,23 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import { StateMgmtAtComp1 } from './Components/StateMgmtAtComp1';
+import { StateMgmtAtComp } from './Components/StateMgmtAtComp';
+import { StateMgmtAtApp } from './Components/StateMgmtAtApp';
+import { useReducer } from 'react';
+import { appReducer } from './reducers/appReducer';
+import { init } from './utils/init';
+import { ctx } from './context'
 
 function App() {
+  const [state, dispatch] = useReducer(appReducer, init)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <StateMgmtAtComp1/>*/}
+      {/* <StateMgmtAtComp/> */}
+
+      {/* Provides data to the context */}
+      <ctx.Provider value={{ state, dispatch }}>
+        {/* Data is available to all the direct and indeirect comp of <StateMgmtAtApp> */}
+        <StateMgmtAtApp />
+      </ctx.Provider>
     </div>
   );
 }
