@@ -8,7 +8,7 @@ class E extends React.Component {
     data: appStore.getState()
   }
 
-  //invoked during mounting phase after comp is rendered
+  //invoked during mounting phase of React Life-cycle after comp is rendered
   componentDidMount() {
     //invoked when store changes found
     appStore.subscribe(() => {
