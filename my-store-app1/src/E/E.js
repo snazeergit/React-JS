@@ -2,9 +2,10 @@ import React from "react";
 import template from "./E.jsx";
 import { appStore } from '../store/appStore'
 
+//Retreiving data from store using 2nd approach: subscribe() + getState()
 class E extends React.Component {
   state = {
-    //initial store data
+    //storing initial store data into state variable
     data: appStore.getState()
   }
 

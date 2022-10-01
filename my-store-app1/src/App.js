@@ -5,6 +5,8 @@ import B from './B/index'
 import C from './C/index'
 import D from './D/index'
 import E from './E/index'
+import {F} from './F'
+import {G} from './G'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <C/>
       <D/>
       <E/>
+      <F/>
+      <G/>
     </div>
   );
 }
