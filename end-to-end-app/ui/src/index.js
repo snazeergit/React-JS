@@ -4,8 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
-import {appStore} from './store/appStore'
+import { appStore } from './store/appStore'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,6 +15,17 @@ root.render(
     {/*Provide store to App component*/}
     <Provider store={appStore}>
       <App />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Provider>
   </React.StrictMode>
 );

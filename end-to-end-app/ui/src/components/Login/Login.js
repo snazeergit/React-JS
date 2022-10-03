@@ -72,7 +72,7 @@ export const Login = () => {
             {template}
             <div className='row'>
                 <div className='offset-sm-5 col-sm-7 text-start'>
-                    <button onClick={fnLogin} className='btn btn-primary'>Login</button>
+                    <button onClick={fnLogin} className='btn btn-primary me-3'>Login</button>
                     <Link to="/register">To Register</Link>
                 </div>
             </div>

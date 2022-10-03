@@ -5,6 +5,8 @@ import { Input } from '../../common/Input/Input'
 import { Select } from '../../common/Select/Select'
 import { TextArea } from '../../common/TextArea/TextArea'
 import { regFormValidations } from '../../validations/regFormValidations'
+import { ServerCall } from '../../shared/ServerCall'
+import {toast} from 'react-toastify'
 
 const inputValues = [
   {
@@ -103,7 +105,7 @@ export const Register = () => {
       return obj.name == name
     })
     if (type == 'checkbox') {
-     
+
       let selHobbies = []
       if (inputObj.val) {
         selHobbies = inputObj.val.split(',')
@@ -123,8 +125,38 @@ export const Register = () => {
     fnPrepareTemplate()
   }
 
-  const fnRegister = (eve) => {
-    
+  const fnRegister = () => {
+    let isFormValid = true
+    let dataObj = {}
+    inputValues.forEach((inputObj) => {
+      const { name, val, errorMsg } = inputObj
+      dataObj[name] = val
+      regFormValidations(inputObj)
+      if (errorMsg) {
+        isFormValid = false
+      }
+    })
+    fnPrepareTemplate()
+    if (!isFormValid) return
+    ServerCall.sendPost("dbops/insert-std", { payload: dataObj })
+      .then((res) => {
+        const{acknowledged,insertedId}=res.data
+        if(acknowledged && insertedId){
+          toast.success('Document successfully inserted')
+          inputValues.forEach((obj)=>{
+            obj.val=''
+            obj.errorMsg=''
+            obj.isShowError=false
+          })
+          fnPrepareTemplate()
+        }else{
+          toast.info('Document not inserted, try again')
+        }
+      })
+      .catch((error) => {
+        toast.error('Unable to establish connection with Server')
+        console.log(error)
+      })
   }
 
   return (
