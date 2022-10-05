@@ -12,6 +12,7 @@ var cors=require('cors');
 
 
 var app = express();
+app.use(cors())// this needs to be immediatly after the above line else it wont work
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,7 +28,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/reg',regRouter);
 app.use('/dbops',dbopsRouter);
-app.use(cors())
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

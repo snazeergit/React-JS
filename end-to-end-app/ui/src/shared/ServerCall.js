@@ -4,7 +4,7 @@ import axios from 'axios'
 const BASE_URL = 'https://krserver.herokuapp.com/'
 
 //Local Mongo instance
-//const BASE_URL='mongodb://localhost:27017/'
+//const BASE_URL='http://localhost:2020/'
 
 export class ServerCall {
     static sendGet(url) {

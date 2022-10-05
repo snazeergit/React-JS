@@ -9,9 +9,10 @@ import { Profile } from './Profile/Profile';
 export const AfterLogin = () => {
   return (
     <div>
+
       <Navbar bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="/home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="/home">KRTiles</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/profile">Profile</Nav.Link>

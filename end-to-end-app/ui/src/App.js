@@ -5,20 +5,24 @@ import { Header } from './common/Header/Header';
 import { BeforeLogin } from './components/BeforeLogin';
 import { AfterLogin } from './components/AfterLogin';
 import { connect } from 'react-redux';
-
+import { Loader, loader } from './common/Loader/Loader';
 
 function App(props) {
+  const { isLoggedIn, isShowLoader } = props
   return (
     <div className="App">
       <Header />
-      {props.isLoggedIn? <AfterLogin/>:<BeforeLogin/>}
+      {isLoggedIn ? <AfterLogin /> : <BeforeLogin />}
       <Footer />
+      {isShowLoader && <Loader />}
     </div>
   );
 }
 App = connect((state) => {
+  const { isLoggedIn, isShowLoader } = state.appReducer
   return {
-    isLoggedIn:state.appReducer.isLoggedIn
+    isLoggedIn: isLoggedIn,
+    isShowLoader: isShowLoader
   }
 })(App)
 export default App;

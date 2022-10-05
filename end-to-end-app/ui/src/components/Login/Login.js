@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import "./Login.css"
 import { Input } from '../../common/Input/Input'
 import { Link } from 'react-router-dom'
-
+import { ServerCall } from '../../shared/ServerCall'
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify'
 const inputValues = [
     {
         label: 'Username',
@@ -23,7 +25,7 @@ const inputValues = [
 ]
 
 export const Login = () => {
-
+    const dispatch = useDispatch()
     const [template, setTemplate] = useState('');
 
     useEffect(() => {
@@ -50,19 +52,43 @@ export const Login = () => {
         setTemplate(inputControlsArr)
     }
 
-    const fnLogin = () => {
+    const fnLogin = async () => {
         let isFormValid = true;
+        let dataObj = {}
         inputValues.forEach((obj) => {
+            dataObj[obj.name] = obj.val
             if (!obj.val) {
                 isFormValid = false;
                 obj.isShowError = true;
             }
         })
-
-        if (!isFormValid) {
-            fnPrepareTemplate()
+        fnPrepareTemplate()
+        if (!isFormValid) return;
+        dispatch({
+            type: "LOADER",
+            payload: true
+        })
+        const res = await ServerCall.sendPost('dbops/auth', { payload: dataObj })
+        dispatch({
+            type: "LOADER",
+            payload: false
+        })
+        const { status, data } = res
+        if (status == 200) {
+            if (data) {
+                const { uid, token, _id } = data
+                localStorage.token = token
+                localStorage.setItem('uid', uid)
+                localStorage.id = _id
+                dispatch({
+                    type: "AUTH",
+                    payload: true
+                })
+            } else {
+                toast.error("Incorrect credentials provided")
+            }
         } else {
-            alert('send request to the server')
+            toast.error("Something went wrong")
         }
     }
 
