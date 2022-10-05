@@ -46,8 +46,8 @@ export const Login = () => {
     }
 
     const fnPrepareTemplate = () => {
-        let inputControlsArr = inputValues.map((obj) => {
-            return <Input data={{ ...obj, fnChange }} />
+        let inputControlsArr = inputValues.map((obj,index) => {
+            return <Input key={index} data={{ ...obj, fnChange }} />
         })
         setTemplate(inputControlsArr)
     }

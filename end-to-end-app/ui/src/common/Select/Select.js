@@ -16,7 +16,8 @@ export const Select = (props) => {
                     <option value=''>Please select</option>
                     {
                         options.map((opt, index) => {
-                            return <option selected={val==values[index]} value={values[index]} key={index}>{opt}</option>
+                            //selected has been changed to defaultValue
+                            return <option defaultValue={val==values[index]} value={values[index]} key={index}>{opt}</option>
                         })
                     }
                 </select>

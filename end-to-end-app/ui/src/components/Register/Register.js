@@ -87,14 +87,14 @@ export const Register = () => {
   }, [])
 
   const fnPrepareTemplate = () => {
-    let inputControlsArr = inputValues.map((obj) => {
+    let inputControlsArr = inputValues.map((obj, index) => {
       switch (obj.tag) {
         case 'input':
-          return <Input data={{ ...obj, fnChange }} />
+          return <Input key={index} data={{ ...obj, fnChange }} />
         case 'select':
-          return <Select data={{ ...obj, fnChange }} />
+          return <Select key={index} data={{ ...obj, fnChange }} />
         case 'textarea':
-          return <TextArea data={{ ...obj, fnChange }} />
+          return <TextArea key={index} data={{ ...obj, fnChange }} />
       }
     })
     setTemplate(inputControlsArr)
