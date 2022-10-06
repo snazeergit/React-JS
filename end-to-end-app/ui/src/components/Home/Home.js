@@ -3,6 +3,9 @@ import './Home.css'
 
 export const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <h1>H</h1>
+      {console.log("visisted Home page")}
+    </div>
   )
 }

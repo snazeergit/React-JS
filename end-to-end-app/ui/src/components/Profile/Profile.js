@@ -3,6 +3,9 @@ import './Profile.css'
 
 export const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>
+      <h1>Profile</h1>
+      {console.log('Visited Profile')}
+    </div>
   )
 }

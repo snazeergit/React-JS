@@ -168,7 +168,6 @@ export const Register = () => {
           payload: false
         })
         toast.error('Unable to establish connection with Server')
-        console.log(error)
       })
   }
 

@@ -5,9 +5,13 @@ import { Header } from './common/Header/Header';
 import { BeforeLogin } from './components/BeforeLogin';
 import { AfterLogin } from './components/AfterLogin';
 import { connect } from 'react-redux';
-import { Loader, loader } from './common/Loader/Loader';
+import { Loader } from './common/Loader/Loader';
+import { appStore } from './store/appStore';
 
 function App(props) {
+  if(localStorage.token){
+    appStore.dispatch({type:"AUTH", payload:true})
+  }
   const { isLoggedIn, isShowLoader } = props
   return (
     <div className="App">
