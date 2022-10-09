@@ -18,21 +18,25 @@ const inputValues = [
 ]
 
 export const Login = () => {
+    const [template, setTemplate] = React.useState('');
+
     //To make the login template load during Login comp loading phase
     React.useEffect(() => {
-        prepareTemplate()
+        fnPrepareTemplate()
     }, [])
 
-    const prepareTemplate = () => {
+    const fnPrepareTemplate = () => {
         let inputControlsArr = inputValues.map((obj, index) => {
             return <Input key={index} data={obj} />
         })
+        setTemplate(inputControlsArr)
     }
     return (
         <div className='container-fluid'>
-            <p>Login</p>
+            <h1 className='text-center mt-3 mb-5'>Login</h1>
+            {template}
             <div className='row'>
-                <div className='col-sm-5'>
+                <div className='iffset-sm-5 col-sm-7 text-start'>
                     <button>Login</button>
                 </div>
             </div>

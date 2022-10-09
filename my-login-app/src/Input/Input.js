@@ -7,22 +7,22 @@ export const Input = (props) => {
         switch (type) {
             case 'text':
             case 'password':
-                return <input type={type} name={name} />
+                return <input type={type} name={name} className='form-control' />
         }
     }
     return (
-        <div className='container-fluid'>
-            <div className='row'>
-                <div className='col-sm-5'>
-                    <b>{label} :</b>
-                </div>
-                <div className='col-sm-3'>
-                    {prepareInputControls()}
-                </div>
-                <div className='col-sm-4'>
-                    {/* Validation error logic */}
-                </div>
+
+        <div className='row mb-3'>
+            <div className='col-sm-5 text-end'>
+                <b>{label} :</b>
+            </div>
+            <div className='col-sm-3 text-start'>
+                {prepareInputControls()}
+            </div>
+            <div className='col-sm-4 text-start'>
+                {/* Validation error logic */}
             </div>
         </div>
+
     )
 }

@@ -4,7 +4,6 @@ import {AfterLoggedIn} from './AfterLoggedIn'
 import {BeforeLoggedIn} from './BeforeLoggedIn'
 import {Header} from './Header/Header'
 import {Footer} from './Footer/Footer'
-import {appStore} from './redux/appStore'
 import {connect}from 'react-redux'
 
 function App(props) {
