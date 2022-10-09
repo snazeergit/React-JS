@@ -5,7 +5,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 export const BeforeLogin = () => {
   return (
-    <div>
+    <div className='mb-5'>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />

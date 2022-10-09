@@ -22,14 +22,18 @@ export const Input = (props) => {
     }
 
     return (
+        //bootstrap every row contains 12 coloums and we specified margin bottom 3 for every row
         <div className='row mb-3'>
-            <div className='col-sm-5 text-end'>
+        {/* for label we assigned 5 columns */}
+            <div className='col-lg-5 text-end'>
                 <b>{label}:</b>
             </div>
-            <div className='col-sm-3 text-start'>
+            {/* for input controle like textbox we assigned 3 columns */}
+            <div className='col-lg-3 text-start'>
                 {fnPrepareInputControls()}
             </div>
-            <div className='col-sm-4 text-start'>
+            {/* for error messages we assigned 4 columns */}
+            <div className='col-lg-4 text-start'>
                 {isShowError && <b className='text-danger'>{errorMsg}</b>}
             </div>
         </div>

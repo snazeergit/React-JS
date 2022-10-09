@@ -1,0 +1,15 @@
+.app-modal > .content{
+    position: absolute;
+    top: 20%;
+    height: auto;
+    background: white;
+    left: 0;
+    right: 0;
+    width: 40%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.app-modal > .mask{
+    opacity: 0.8 !important;
+}

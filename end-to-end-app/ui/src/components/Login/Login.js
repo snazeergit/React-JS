@@ -27,7 +27,7 @@ const inputValues = [
 export const Login = () => {
     const dispatch = useDispatch()
     const [template, setTemplate] = useState('');
-
+    //To make the login template load during Login comp loading phase
     useEffect(() => {
         fnPrepareTemplate()
     }, [])
@@ -39,14 +39,16 @@ export const Login = () => {
         })
         inputObj.val = value
         inputObj.isShowError = value ? false : true
-        if (!value) {
-            inputObj.isShowError = true
-        }
+
+        /* if (!value) {
+             inputObj.isShowError = true
+         }
+         */
         fnPrepareTemplate()
     }
 
     const fnPrepareTemplate = () => {
-        let inputControlsArr = inputValues.map((obj,index) => {
+        let inputControlsArr = inputValues.map((obj, index) => {
             return <Input key={index} data={{ ...obj, fnChange }} />
         })
         setTemplate(inputControlsArr)
@@ -93,10 +95,15 @@ export const Login = () => {
     }
 
     return (
+        /* container-fluid is to remove the horizontal scroll i.e changing fixed width to full width*/
         <div className='container-fluid'>
+            {/* margin top 3 margin bottom 5 */}
             <h1 className="text-center mt-3 mb-5">Login</h1>
             {template}
+            {/*row class is having -15 margin right and left so we get horizantal scroling to avoid use container-fluid in place container */}
             <div className='row'>
+                {/*out of 12 columns leave 5 columns empty and take 7 columns for login button 
+                and btn should display at the start of the 7 column group i.e in the start of the 6th column */}
                 <div className='offset-sm-5 col-sm-7 text-start'>
                     <button onClick={fnLogin} className='btn btn-primary me-3'>Login</button>
                     <Link to="/register">To Register</Link>
