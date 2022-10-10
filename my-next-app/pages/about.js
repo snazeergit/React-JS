@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from '../styles/Home.module.css'
 
-const about = () => {
+const About = () => {
     return (
 
+        //Dummy content below
         <div className={styles.about}>
             <h1>What is Next.js?</h1>
             <p>Next.js is a flexible <strong>React framework</strong> that gives you building blocks to create fast <strong>web applications</strong>.</p>
@@ -39,4 +40,4 @@ const about = () => {
 
     )
 }
-export default about
+export default About
