@@ -4,7 +4,7 @@ export const Header = () => {
   return (
     <div className='header' >
        
-          Welcome to Next JS Framework
+          Welcome to Next.js Framework
       
     </div>
   )

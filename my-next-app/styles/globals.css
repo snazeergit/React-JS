@@ -14,7 +14,7 @@ body {
 
 .menu {
   text-align: right;
-  background: grey;
+  background: rgb(112, 196, 131);
   line-height: 40px;
   position: sticky;
   width: 100%;
