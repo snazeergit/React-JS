@@ -1,0 +1,15 @@
+*all #id .class []attribute 
+
+first-child 	p:first-child  	select all the <p> element that are first childs of all parent elements 
+last-child  	p:last-child   	select all the <p> element that are last childs of all parent elements 
+
+first-of-type	p:first-of-type	select both direct and indirect first occurances of  <p> element
+last-of-type    p:last-of-type	select both direct and indirect last occurances of  <p> element
+
+> 		div>p select all <p> elements that are direct childrens of <div> element
+space	div p select all <p> elements that are both direct and indirect childrens of <div> element
+
++		div+P select all the <p> elements that are first siblings to <div> and immediatly after <div> 
+~		div~P select all the <p> elements that are just siblings to <div> and followed after <div>
+
+nth-child	p:nth-child(4) select the <p> element that is 4th child position to any element.
